@@ -1,0 +1,85 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+    height: 100%;
+}
+
+body {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    padding: 0; margin: 0;
+    background: #0C171B;
+    color: #fff;
+}
+
+.container {
+    width: 1774px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.border {
+    font-weight: bold;
+}
+
+.relative {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+button,
+button:hover,
+button:active,
+button:focus,
+input,
+input:focus,
+input:active,
+textarea:focus,
+textarea:active,
+select:focus,
+select:active {
+    text-decoration: none;
+    outline: none;
+}
+
+.button {
+    background: #B70000;
+    border-radius: 22px;
+    padding: 14px 32px;
+    color: #fff;
+    font-size: 1.33rem;
+    transition: .2s linear;
+
+    &:hover {
+        box-shadow: 0 0 5px 5px rgba(0,0,0,.30) inset;
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 6.5rem;
+}
+
+h2 {
+    font-size: 5.33rem;
+    color: #fff;
+}

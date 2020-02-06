@@ -1,0 +1,17 @@
+{
+    "name": "frontend",
+    "description": "",
+    "main": "index.js",
+    "authors": [
+        "Parviz Abdulloev <parviz23.10@inbox.ru>"
+    ],
+    "license": "ISC",
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}

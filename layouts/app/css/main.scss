@@ -1,0 +1,329 @@
+@import "global";
+
+/*=============================================
+ ================= HEADER =====================
+ ============================================*/
+
+.header {
+    padding: 41px 0 0 0;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    h1 {
+        margin-left: 50px;
+    }
+}
+
+.logo {
+    width: 200px;
+    height: 178px;
+    display: inline-block;
+
+    &__link {
+        &:hover .cls-1 {
+            fill: grey;
+        }
+    }
+}
+
+.auth {
+    //&__button {
+    //    background: #B70000;
+    //    border-radius: 22px;
+    //    padding: 14px 32px;
+    //    color: #fff;
+    //    font-size: 1.33rem;
+    //    transition: .2s linear;
+    //
+    //    &:hover {
+    //        box-shadow: 0 0 5px 5px rgba(0,0,0,.30) inset;
+    //        color: rgba(255, 255, 255, 0.8);
+    //    }
+    //}
+    &__button_register {
+        margin-right: 28px;
+    }
+}
+
+/*=============================================
+ ================== FILMS =====================
+ ============================================*/
+
+.section-films {
+    padding: 50px 0 150px 0;
+
+    .films {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .film {
+        margin-top: 91px;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            position: relative;
+            width: 100%;
+        }
+
+    }
+
+    .film__overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%; height: 100%;
+        left: 0; top: 0;
+        opacity: 0;
+        transition: all ease 0.5s;
+        background-color: rgba(0, 0, 0, 0.56);
+    }
+
+    .film:hover .film__overlay {
+        opacity: 1;
+    }
+
+    .film__link {
+        color: #fff;
+        font-size: 1.3rem;
+        border-bottom: 1px solid #fff;
+    }
+}
+
+/*=============================================
+ ================== FOOTER ====================
+ ============================================*/
+
+.footer {
+    background: #324147;;
+    padding: 60px 0 81px 0;
+
+    &__title {
+        font-size: 5.33rem;
+    }
+
+    &__all-rights {
+        font-size: 2.3rem;
+        margin-top: 100px;
+    }
+}
+
+/*=============================================
+ ================= REGISTER ===================
+ ============================================*/
+
+.section-register {
+    padding: 117px 0 164px 0;
+    height: 100vh;
+}
+
+.form {
+    &-register {
+        margin-top: 65px;
+    }
+
+    &-login {
+
+    }
+
+    &__input {
+        border-radius: 10px;
+        width: 374px;
+        padding: 12px 4px 12px 15px;
+        border: none;
+        display: block;
+        margin: 47px auto 0 auto;
+
+        &:focus {
+            // при наведении что-то будет
+        }
+    }
+
+    &__button {
+        display: block;
+        margin: 47px auto 0 auto;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="text"], input[type="submit"], input[type="password"] {
+        font-family: 'Lora', serif;
+        font-size: 1.33rem;
+    }
+}
+
+
+/*=============================================
+ =================== FILM =====================
+ ============================================*/
+
+.section-film {
+    padding: 159px 0 140px 0;
+}
+
+.about-film {
+    display: flex;
+
+    &__text {
+        margin-left: 60px;
+    }
+
+    &__name {
+        font-weight: bold;
+        font-size: 1.73rem;
+    }
+
+    &__description {
+        margin-top: 60px;
+        font-size: 1.16rem;
+        line-height: 24px;
+        text-align: justify;
+    }
+
+    //&_session {
+    //    margin-top: 110px;
+    //}
+
+}
+
+.theatres {
+    margin-top: 93px;
+
+    &__item {
+        display: flex;
+        margin-top: 110px;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 2.8rem;
+    }
+
+    &__address {
+        font-size: 1.5rem;
+        margin-top: 23px;
+    }
+
+    &__name {
+        font-size: 2.533rem;
+    }
+
+    &__times {
+        display: flex;
+        //flex-wrap: wrap-reverse;
+        flex-wrap: wrap;
+        //flex-direction: row-reverse;
+        max-width: 50%;
+    }
+
+    &__time {
+        width: 121px;
+        height: 65px;
+        background: #36393E;
+        font-size: 1.7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px 20px 0;
+
+        &:hover {
+            color: grey;
+            cursor: pointer;
+        }
+    }
+
+    &__name_session {
+        font-size: 1.6rem;
+    }
+
+    &__address_session {
+        font-size: 1.4rem;
+    }
+
+    &__date-time {
+        margin-top: 9px;
+        font-size: 1.4rem;
+    }
+
+}
+
+/*=============================================
+================== SESSION ====================
+ ============================================*/
+
+.section-session {
+    padding: 110px 0;
+}
+
+
+.hall-plan {
+
+    margin-top: 85px;
+
+    &__rectangle {
+        width: 800px;
+        height: 8px;
+        margin: 0 auto;
+        background: #59636B;
+    }
+
+    &__structure {
+        margin-top: 56px;
+    }
+
+    &__counter {
+        display: inline-block;
+        font-size: 1.55rem;
+        margin: 0 40px;
+    }
+
+    &__row {
+        text-align: center;
+    }
+
+    &__place {
+        width: 18px; height: 18px;
+        background: #C4C4C4;
+        display: inline-block;
+        margin: 1px;
+
+        &:hover {
+            background: #B70000;
+            cursor: pointer;
+        }
+    }
+
+    &__place_not-active {
+        background: #36393E;
+
+        &:hover {
+            background: #36393E;
+            cursor: default;
+        }
+    }
+}
+
+.buy {
+
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 44px;
+
+    &__button {
+
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "browser-sync": "latest",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "latest",
+        "gulp-clean-css": "latest",
+        "gulp-imagemin": "^6.1.0",
+        "gulp-sass": "^3.2.1",
+        "gulp-sourcemaps": "latest",
+        "gulp-uglify": "^3.0.2",
+        "gulp-uglify-es": "^2.0.0",
+        "gulp-watch": "latest",
+        "imagemin-giflossy": "^5.1.10",
+        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-pngquant": "^8.0.0",
+        "imagemin-zopfli": "^6.0.0",
+        "main-bower-files": "latest",
+        "rimraf": "latest"
+    },
+    "devDependencies": {
+        "webpack": "^4.41.5",
+        "webpack-cli": "^3.3.10"
+    }
+}
