@@ -27,11 +27,22 @@ class HomeController
 
     public function film($id)
     {
-        var_dump($_GET);
+//        var_dump($_GET);
+        $film = $this->database->getRow("films", $id);
+//        var_dump($film);
+
         if ($_GET) {
-            echo $this->view->render("session");
+            $session = $this->database->getSession($film->id, $_GET['date'], $_GET['time']);
+            $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
+            $rows = $this->database->getAllCondition("rows", "id_hall", $session->id_hall);
+            $hall = $this->database->getRow("halls", $session->id_hall);
+            echo $this->view->render("session", [
+                'cinema' => $cinema,
+                'film' => $film,
+                'rows' => $rows,
+                'hall' => $hall
+            ]);
         } else {
-            $film = $this->database->getRow("films", $id);
             $cinemas = $this->database->getCinemaWhereExistFilms($id);
 
             echo $this->view->render("film", [

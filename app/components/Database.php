@@ -300,23 +300,6 @@ class Database
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public function getSessionsAndCinema($id)
-    {
-        $query = $this->pdo->prepare("SELECT * 
-                                                       FROM films
-                                                            INNER JOIN sessions on films.id = sessions.id_film
-                                                            INNER JOIN halls on sessions.id_hall = halls.id
-                                                            
-                                                WHERE `id` = :id");
-        $params = [
-            'id' => $id
-        ];
-        $query->execute($params);
-
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-
-
 
     public function getSessionsForCinema($idFilm, $idCinema)
     {
@@ -347,5 +330,21 @@ class Database
         ];
         $query->execute($params);
         return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
+
+    public function getSession($idFilm, $date, $time)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM sessions
+                                                         WHERE `id_film` = :idFilm AND `date` = :date_ AND `time` = :time_ 
+                                                         LIMIT 1");
+        $params = [
+            'idFilm' => $idFilm,
+            'date_' => date("Y-m-d", strtotime($date)),
+            'time_' => date("H:i:s", strtotime($time))
+        ];
+        $query->execute($params);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 }
