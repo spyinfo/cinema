@@ -320,11 +320,7 @@ class Database
 
     public function getCinemaWhereExistFilms($idFilm)
     {
-        $query = $this->pdo->prepare("SELECT DISTINCT cinemas.id, cinemas.name, cinemas.street, cinemas.district, cinemas.house 
-                                                       FROM cinemas
-                                                            INNER JOIN halls on cinemas.id = halls.id_cinema
-                                                            INNER JOIN sessions on halls.id = sessions.id_hall
-                                                        WHERE `id_film` = :idFilm");
+        $query = $this->pdo->prepare("SELECT * FROM getCinemaWhereExistFilms WHERE `id_film` = :idFilm");
         $params = [
             "idFilm" => $idFilm
         ];

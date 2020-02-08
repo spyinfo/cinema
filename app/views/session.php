@@ -41,7 +41,7 @@
                     <div class="hall-plan__row">
                         <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
                     <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):?>
-                            <div class="hall-plan__place" data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>"></div>
+                            <div class="hall-plan__place" data-place="<?= $row->id_row ;?>" data-row="<?= $i;?>"></div>
                     <?php endfor;?>
                         <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
                         </div>
@@ -58,9 +58,19 @@
             </div>
         </div>
 
-        <div class="buy">
-            <a href="#" class="button buy__button">Перейти к оформлению</a>
+        <div class="selected-places text-center"></div>
+
+
+        <div class="buttons-session">
+            <div class="back">
+                <a href="/film/<?= $film->id ;?>" class="button">Назад</a>
+            </div>
+
+            <div class="buy">
+                <a href="#" class="button">Перейти к оформлению</a>
+            </div>
         </div>
+
 
     </div>
 </section>

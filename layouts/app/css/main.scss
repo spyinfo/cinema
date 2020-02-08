@@ -344,13 +344,8 @@
     }
 }
 
-.buy {
-
-    display: flex;
-    flex-direction: row-reverse;
+.buttons-session {
     margin-top: 44px;
-
-    &__button {
-
-    }
+    display: flex;
+    justify-content: space-between;
 }

@@ -1,22 +1,26 @@
 $( function () {
     $(".hall-plan__place").not(".hall-plan__place_not-active").on('click', function () {
 
-        const place = `
-            <div class="selected-places__item ">
+        const row   = $(this).data("row");
+        const place = $(this).data("place");
+
+        const placeHTML = `
+            <div class="selected-places__item" data-place-selected="${place}" data-row-selected="${row}">
                 <div class="selected-places__place">
-                    ${$(this).data("place")} место
+                    ${row} место
                 </div>
                 <div class="selected-places__row">
-                    ${$(this).data("row")} ряд
+                    ${place} ряд
                 </div>
             </div>
         `;
 
         $(this).toggleClass("hall-plan__place_active");
-        if ($(this).hasClass("hall-plan__place_active")) {
-            $(".selected-places").append(place);
-        } else {
 
+        if ($(this).hasClass("hall-plan__place_active")) {
+            $(".selected-places").append(placeHTML);
+        } else {
+            $(`*[data-row-selected="${row}"][data-place-selected="${place}"]`).remove();
         }
 
     });
