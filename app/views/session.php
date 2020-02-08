@@ -23,7 +23,7 @@
                                 <div class="theatres__date-time">
                                     <?= $_GET['date'] . " " . date("H:i", strtotime($_GET['time']));?>
                                 </div>
-                                <div>
+                                <div class="theatres__hall">
                                     <?= $hall->name;?>
                                 </div>
                             </div>
@@ -41,11 +41,12 @@
                     <div class="hall-plan__row">
                         <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
                     <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):?>
-                            <div class="hall-plan__place"></div>
+                            <div class="hall-plan__place" data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>"></div>
                     <?php endfor;?>
                         <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
                         </div>
                 <?php endforeach;?>
+
 <!--                <div class="hall-plan__row">-->
 <!--                    <div class="hall-plan__counter">1</div>-->
 <!--                    <div class="hall-plan__place"></div>-->

@@ -39,7 +39,7 @@
 
                         foreach ($sessions as $session):?>
 
-                    <a class="theatres__time" href="?time=<?=date("H.i", strtotime($session->time));?>&date=<?=date("d.m.Y", strtotime($session->time));?>&cinema=<?=$cinema->name;?>">
+                    <a class="theatres__time" href="?time=<?=date("H.i", strtotime($session->time));?>&date=<?=date("d.m.Y", strtotime($session->date));?>&cinema=<?=$cinema->name;?>">
                         <?= date("H:i", strtotime($session->time));?>
                     </a>
                     <?php endforeach;?>

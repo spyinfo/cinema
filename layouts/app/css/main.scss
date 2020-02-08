@@ -78,6 +78,11 @@
             width: 100%;
         }
 
+        &__name {
+            font-size: 1.7rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
     }
 
     .film__overlay {
@@ -259,6 +264,11 @@
         font-size: 1.4rem;
     }
 
+    &__hall {
+        font-size: 1.38rem;
+        margin-top: 8px;
+    }
+
 }
 
 /*=============================================
@@ -314,6 +324,23 @@
             background: #36393E;
             cursor: default;
         }
+    }
+
+    &__place_active {
+        background: #B70000;
+    }
+}
+
+.selected-places {
+    margin-top: 38px;
+    font-size: 1.15rem;
+
+    &__item {
+        display: inline-block;
+        margin-right: 14px;
+        margin-bottom: 19px;
+        background: grey;
+        padding: 8px;
     }
 }
 

@@ -36,6 +36,12 @@ class HomeController
             $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
             $rows = $this->database->getAllCondition("rows", "id_hall", $session->id_hall);
             $hall = $this->database->getRow("halls", $session->id_hall);
+            $places = $this->database->getAllCondition("places", "id_hall", $session->id_hall);
+            var_dump("session", $session);
+            var_dump("cinema", $cinema);
+            var_dump("rows", $rows);
+            var_dump("hall", $hall);
+            var_dump("places", $places);
             echo $this->view->render("session", [
                 'cinema' => $cinema,
                 'film' => $film,
