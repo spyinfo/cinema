@@ -301,6 +301,13 @@ class Database
     }
 
 
+    /**
+     * Возвращает сеансы
+     *
+     * @param $idFilm
+     * @param $idCinema
+     * @return array
+     */
     public function getSessionsForCinema($idFilm, $idCinema)
     {
         $query = $this->pdo->prepare("SELECT *
@@ -317,7 +324,12 @@ class Database
     }
 
 
-
+    /**
+     * Возвращает кинотеатры, где на прокате есть текущие фильмы
+     *
+     * @param $idFilm
+     * @return array
+     */
     public function getCinemaWhereExistFilms($idFilm)
     {
         $query = $this->pdo->prepare("SELECT * FROM getCinemaWhereExistFilms WHERE `id_film` = :idFilm");
@@ -329,7 +341,14 @@ class Database
     }
 
 
-
+    /**
+     *
+     *
+     * @param $idFilm
+     * @param $date
+     * @param $time
+     * @return mixed
+     */
     public function getSession($idFilm, $date, $time)
     {
         $query = $this->pdo->prepare("SELECT * FROM sessions

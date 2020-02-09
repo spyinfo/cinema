@@ -7,10 +7,10 @@ $( function () {
         const placeHTML = `
             <div class="selected-places__item" data-place-selected="${place}" data-row-selected="${row}">
                 <div class="selected-places__place">
-                    ${row} место
+                    ${place} место
                 </div>
                 <div class="selected-places__row">
-                    ${place} ряд
+                    ${row} ряд
                 </div>
             </div>
         `;

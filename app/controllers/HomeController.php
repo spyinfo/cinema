@@ -36,7 +36,15 @@ class HomeController
             $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
             $rows = $this->database->getAllCondition("rows", "id_hall", $session->id_hall);
             $hall = $this->database->getRow("halls", $session->id_hall);
-            $places = $this->database->getAllCondition("places", "id_hall", $session->id_hall);
+            $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
+            //            $places = $this->database->getAllCondition("places", "id_hall", $session->id_hall);
+            var_dump("sessions", $session);
+            var_dump("tickets", $tickets);
+
+
+
+//            var_dump($session);
+//            var_dump($cinema);
 //            var_dump("session", $session);
 //            var_dump("cinema", $cinema);
 //            var_dump("rows", $rows);
@@ -46,7 +54,9 @@ class HomeController
                 'cinema' => $cinema,
                 'film' => $film,
                 'rows' => $rows,
-                'hall' => $hall
+                'hall' => $hall,
+                'session' => $session,
+                'tickets' => $tickets
             ]);
         } else {
             $cinemas = $this->database->getCinemaWhereExistFilms($id);

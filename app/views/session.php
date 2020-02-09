@@ -1,5 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Сеанс']) ?>
 
+<?php if ($session && $cinema):?>
+
 <section class="section-session">
     <div class="container">
         <div class="about-film about-film_session">
@@ -37,14 +39,27 @@
             <div class="hall-plan__rectangle"></div>
             <div class="hall-plan__structure">
                 <?php foreach ($rows as $row):?>
+                    <?php var_dump($row);?>
+<!--                    --><?php //if (array_search($row->id_row, $tickets)) echo "yes"; else echo "no";?>
+
+                    <?php
+                        $index = 'id_row';
+                        $value = $row->id_row;
+                        foreach ($tickets as $ticket) {
+                            if ($ticket->id_row == $value) {
+                                var_dump("YES", $ticket);
+                            }
+                        }
+                    ;?>
+
 
                     <div class="hall-plan__row">
                         <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
                     <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):?>
-                            <div class="hall-plan__place" data-place="<?= $row->id_row ;?>" data-row="<?= $i;?>"></div>
+                            <div class="hall-plan__place" data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>"></div>
                     <?php endfor;?>
                         <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
-                        </div>
+                    </div>
                 <?php endforeach;?>
 
 <!--                <div class="hall-plan__row">-->
@@ -60,17 +75,31 @@
 
         <div class="selected-places text-center"></div>
 
-
         <div class="buttons-session">
             <div class="back">
                 <a href="/film/<?= $film->id ;?>" class="button">Назад</a>
             </div>
 
             <div class="buy">
-                <a href="#" class="button">Перейти к оформлению</a>
+                <a href="/payment/" class="button">Перейти к оформлению</a>
             </div>
         </div>
-
-
     </div>
 </section>
+
+<?php else:?>
+
+    <section class="section-session">
+        <div class="container">
+            <div class="session-not-find">
+                К сожалению, такого сеанса не существует. <br>
+                Возможно вы вручную изменили URL в браузере.
+
+                <div class="back session-not-find__back">
+                    <a href="/film/<?= $film->id ;?>" class="button">Назад</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php endif;?>
