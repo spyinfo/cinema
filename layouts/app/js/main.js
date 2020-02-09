@@ -1,8 +1,9 @@
 $( function () {
-    $(".hall-plan__place").not(".hall-plan__place_not-active").on('click', function () {
+    $(".fake-checkbox").not(".fake-checkbox_not-active").on('click', function () {
 
-        const row   = $(this).data("row");
-        const place = $(this).data("place");
+        const input = $(this).prev();
+        const row   = input.data("row");
+        const place = input.data("place");
 
         const placeHTML = `
             <div class="selected-places__item" data-place-selected="${place}" data-row-selected="${row}">
@@ -15,9 +16,7 @@ $( function () {
             </div>
         `;
 
-        $(this).toggleClass("hall-plan__place_active");
-
-        if ($(this).hasClass("hall-plan__place_active")) {
+        if (!input.is(":checked")) {
             $(".selected-places").append(placeHTML);
         } else {
             $(`*[data-row-selected="${row}"][data-place-selected="${place}"]`).remove();

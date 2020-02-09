@@ -45,6 +45,7 @@ $container = $containerBuilder->build();
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', ["App\controllers\HomeController", "index"]);
     $r->addRoute('GET', '/film/{id}', ["App\controllers\HomeController", "film"]);
+    $r->addRoute('POST', '/payment', ["App\controllers\HomeController", "payment"]);
     // TODO удалить потом
 //    $r->addRoute('POST', '/test', ["App\controllers\HomeController", "test"]);
 });

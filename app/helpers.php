@@ -1,9 +1,41 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
-function getSessionsForFilms($idFilm, $idCinema)
+use App\components\Database;
+
+class Helpers
 {
-    global $container;
-    $pdo = $container->get('PDO');
-    $database = new \App\components\Database($pdo);
-    return $database->getSessionsForCinema($idFilm, $idCinema);
+    private $container;
+
+    public function __construct()
+    {
+        global $container;
+        $this->container = $container;
+    }
+
+    /**
+     * Getter $container
+     *
+     * @return \DI\Container
+     */
+    private function getContainer()
+    {
+        return $this->container;
+    }
+
+    public static function objectArraySearch($array, $index, $value)
+    {
+        foreach ($array as $arrayInf) {
+            if ($arrayInf->{$index} == $value) return $arrayInf;
+        }
+        return false;
+    }
+
+    public static function getSessionsForFilms($idFilm, $idCinema)
+    {
+        $pdo = (new Helpers)->getContainer()->get('PDO');
+        $database = new Database($pdo);
+        return $database->getSessionsForCinema($idFilm, $idCinema);
+    }
+
+
 }

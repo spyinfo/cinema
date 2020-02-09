@@ -340,6 +340,50 @@
     }
 }
 
+.checkbox {
+    display: none;
+}
+
+.fake-checkbox {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #C4C4C4;
+    margin: 1px;
+    position: relative;
+
+    &:hover {
+        background: #b7524d;
+        cursor: pointer;
+    }
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 18px;
+        height: 18px;
+        background: #b70000;
+        opacity: 0;
+        transition: .2s;
+    }
+
+    &_not-active {
+        background: #36393E;
+
+        &:hover {
+            background: #36393E;
+            cursor: default;
+        }
+    }
+}
+
+.checkbox:checked + .fake-checkbox::before {
+    opacity: 1;
+}
+
 .selected-places {
     margin-top: 38px;
     font-size: 1.15rem;
@@ -357,4 +401,9 @@
     margin-top: 44px;
     display: flex;
     justify-content: space-between;
+
+
+    .back {
+        margin-top: 14px;
+    }
 }

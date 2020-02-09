@@ -15,8 +15,6 @@
             </div>
         </div>
 
-        <!--   TODO доделать вывод на экран всех сеансов     -->
-
         <div class="theatres">
             <h3 class="theatres__title text-center">Кинотеатры</h3>
 
@@ -28,20 +26,19 @@
                         <?= $cinema->name;?>
                     </div>
                     <div class="theatres__address">
-<!--                        ул. Ходынский бульвар д. 4, ТЦ "АВИАПАРК".-->
                         <?= $cinema->street . " " . $cinema->house;?>
                     </div>
                 </div>
                 <div class="theatres__times">
 
                     <?php
-                        $sessions = getSessionsForFilms($film->id, $cinema->id);
-
+                        $sessions = Helpers::getSessionsForFilms($film->id, $cinema->id);
                         foreach ($sessions as $session):?>
 
-                    <a class="theatres__time" href="?time=<?=date("H.i", strtotime($session->time));?>&date=<?=date("d.m.Y", strtotime($session->date));?>&cinema=<?=$cinema->name;?>">
-                        <?= date("H:i", strtotime($session->time));?>
-                    </a>
+                            <a class="theatres__time"
+                               href="?time=<?=date("H.i", strtotime($session->time));?>&date=<?=date("d.m.Y", strtotime($session->date));?>&cinema=<?=$cinema->name;?>">
+                                <?= date("H:i", strtotime($session->time));?>
+                            </a>
                     <?php endforeach;?>
                 </div>
             </div>

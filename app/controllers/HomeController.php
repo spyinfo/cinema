@@ -68,6 +68,11 @@ class HomeController
         }
     }
 
+    public function payment()
+    {
+        var_dump($_POST);
+    }
+
     // TODO удалить потом
 //    public function test()
 //    {
