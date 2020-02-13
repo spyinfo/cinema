@@ -342,6 +342,10 @@
 
 .checkbox {
     display: none;
+
+    //:disabled {
+    //    color: grey;
+    //}
 }
 
 .fake-checkbox {
@@ -405,5 +409,41 @@
 
     .back {
         margin-top: 14px;
+    }
+}
+
+/*=============================================
+================== PAYMENT ====================
+ ============================================*/
+
+
+.section-payment {
+    padding: 194px 0 168px 0;
+}
+
+.payment {
+
+    text-align: center;
+
+    h4 {
+        font-size: 2.7rem;
+        margin-bottom: 42px;
+    }
+
+    &__info {
+        font-size: 1.6rem;
+    }
+
+    &__info > div {
+        margin-bottom: 20px;
+    }
+
+    &__sum {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    &__button {
+        margin-top: 74px;
     }
 }

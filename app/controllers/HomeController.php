@@ -27,9 +27,7 @@ class HomeController
 
     public function film($id)
     {
-//        var_dump($_GET);
         $film = $this->database->getRow("films", $id);
-//        var_dump($film);
 
         if ($_GET) {
             $session = $this->database->getSession($film->id, $_GET['date'], $_GET['time']);
@@ -40,9 +38,6 @@ class HomeController
             //            $places = $this->database->getAllCondition("places", "id_hall", $session->id_hall);
             var_dump("sessions", $session);
             var_dump("tickets", $tickets);
-
-
-
 //            var_dump($session);
 //            var_dump($cinema);
 //            var_dump("session", $session);
@@ -71,6 +66,11 @@ class HomeController
     public function payment()
     {
         var_dump($_POST);
+        foreach ($_POST as $key => $value) {
+            var_dump($key);
+            $places = explode("-", $key);
+            var_dump($places);
+        }
     }
 
     // TODO удалить потом

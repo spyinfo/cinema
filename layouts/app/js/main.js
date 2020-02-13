@@ -1,7 +1,12 @@
 $( function () {
-    $(".fake-checkbox").not(".fake-checkbox_not-active").on('click', function () {
 
+    // $(".checkbox:disabled").each(function (index, item) {
+    //     $(this).next()
+    // });
+
+    $(".fake-checkbox").not(".fake-checkbox_not-active").on('click', function (e) {
         const input = $(this).prev();
+
         const row   = input.data("row");
         const place = input.data("place");
 
@@ -21,6 +26,5 @@ $( function () {
         } else {
             $(`*[data-row-selected="${row}"][data-place-selected="${place}"]`).remove();
         }
-
     });
 });

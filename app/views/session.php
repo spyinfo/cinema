@@ -39,14 +39,13 @@
             <div class="hall-plan">
                 <div class="hall-plan__rectangle"></div>
                 <div class="hall-plan__structure">
-                    <?php foreach ($rows as $row):?>
-                        <?php
-                            $isPlaceFound = Helpers::objectArraySearch($tickets, "id_row", $row->id_row);
-
-                            if ($isPlaceFound):?>
-                                <div class="hall-plan__row">
-                                    <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
-                                <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):?>
+                    <?php foreach ($rows as $row):
+                          $isPlaceFound = Helpers::objectArraySearch($tickets, "id_row", $row->id_row);
+                    ?>
+                        <div class="hall-plan__row">
+                            <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
+                                <?php if ($isPlaceFound):?>
+                                    <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):?>
                                         <?php if ($i == $isPlaceFound->id_place):?>
                                             <label>
                                                 <input type="checkbox" class="checkbox" data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>" disabled name="<?= $row->id_row . "-" . $i ;?>">
@@ -58,22 +57,17 @@
                                                 <span class="fake-checkbox"></span>
                                             </label>
                                         <?php endif;?>
-                                <?php endfor;?>
-                                    <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
-                                </div>
-
-                            <?php else:?>
-                                <div class="hall-plan__row">
-                                    <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
+                                    <?php endfor;?>
+                                <?php else:?>
                                     <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):?>
                                         <label>
-                                            <input type="checkbox" class="checkbox"data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>" name="<?= $row->id_row . "-" . $i ;?>">
+                                            <input type="checkbox" class="checkbox" data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>" name="<?= $row->id_row . "-" . $i ;?>">
                                             <span class="fake-checkbox"></span>
                                         </label>
                                     <?php endfor;?>
-                                    <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
-                                </div>
-                            <?php endif;?>
+                                <?php endif;?>
+                            <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
+                        </div>
                     <?php endforeach;?>
                 </div>
             </div>
