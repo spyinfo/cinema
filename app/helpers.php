@@ -30,6 +30,14 @@ class Helpers
         return false;
     }
 
+    public static function objectDoubleArraySearch($array, $indexFirst, $valueFirst, $indexSecond, $valueSecond)
+    {
+        foreach ($array as $arrayInf) {
+            if ($arrayInf->{$indexFirst} == $valueFirst && $arrayInf->{$indexSecond} == $valueSecond) return $arrayInf;
+        }
+        return false;
+    }
+
     public static function getSessionsForFilms($idFilm, $idCinema)
     {
         $pdo = (new Helpers)->getContainer()->get('PDO');

@@ -1,10 +1,16 @@
 $( function () {
 
-    // $(".checkbox:disabled").each(function (index, item) {
-    //     $(this).next()
-    // });
+    const checkbox = $(".fake-checkbox");
 
-    $(".fake-checkbox").not(".fake-checkbox_not-active").on('click', function (e) {
+    // Переключаем на false все input-ы
+    $(checkbox).not(".fake-checkbox_not-active").each(function (item) {
+        if ($(this).prev().is(":checked")) {
+            $(this).prev().prop("checked", false);
+        }
+    });
+
+    // Обработка клика на input
+    $(checkbox).not(".fake-checkbox_not-active").on('click', function (e) {
         const input = $(this).prev();
 
         const row   = input.data("row");

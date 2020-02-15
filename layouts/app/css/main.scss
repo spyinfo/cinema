@@ -412,6 +412,46 @@
     }
 }
 
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+
+    &__item {
+        display: flex;
+        margin: 0 17px;
+        text-align: center;
+    }
+
+    &__square {
+        width: 19px;
+        height: 19px;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    &__square_selected {
+        background: #b70000;
+    }
+
+    &__square_free {
+        background: #c4c4c4;
+    }
+
+    &__square_engaged {
+        background: #36393E;
+    }
+
+    &__desc {
+
+    }
+}
+
+.cost {
+    text-align: center;
+    margin-top: 18px;
+}
+
 /*=============================================
 ================== PAYMENT ====================
  ============================================*/
@@ -447,3 +487,40 @@
         margin-top: 74px;
     }
 }
+
+/*=============================================
+================== TICKET =====================
+ ============================================*/
+
+.section-ticket {
+    padding: 117px 0 142px 0;
+}
+
+.congratulations {
+    font-size: 1.9rem;
+    padding-bottom: 70px;
+
+    &__head {
+
+    }
+
+    &__ticket {
+        margin-top: 29px;
+    }
+
+    &__desc {
+        margin-top: 80px;
+        font-size: 1.7rem;
+
+    }
+
+    &__item {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+
+    &__item:nth-child(1) {
+        margin-top: 20px;
+    }
+}
+

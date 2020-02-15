@@ -36,14 +36,12 @@ class HomeController
             $hall = $this->database->getRow("halls", $session->id_hall);
             $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
             //            $places = $this->database->getAllCondition("places", "id_hall", $session->id_hall);
-            var_dump("sessions", $session);
-            var_dump("tickets", $tickets);
-//            var_dump($session);
-//            var_dump($cinema);
+//            var_dump("sessions", $session);
+//            var_dump("tickets", $tickets);;
 //            var_dump("session", $session);
 //            var_dump("cinema", $cinema);
 //            var_dump("rows", $rows);
-//            var_dump("hall", $hall);
+            var_dump("hall", $hall);
 //            var_dump("places", $places);
             echo $this->view->render("session", [
                 'cinema' => $cinema,
@@ -63,14 +61,67 @@ class HomeController
         }
     }
 
-    public function payment()
+    public function payment($id)
     {
-        var_dump($_POST);
+        $cost = $_POST['cost'];
+        $session_id = $_POST['session'];
+        $hall_id = $_POST['hall'];
+
+        unset($_POST['cost']);
+        unset($_POST['session']);
+        unset($_POST['hall']);
+
+        $countOfPlaces = count($_POST);
+        $total = $countOfPlaces * $cost;
+
+        $places = [];
+
         foreach ($_POST as $key => $value) {
-            var_dump($key);
-            $places = explode("-", $key);
-            var_dump($places);
+            array_push($places, explode("-", $key));
         }
+
+        echo $this->view->render("payment", [
+            'count' => $countOfPlaces,
+            'total' => $total,
+            'cost' => $cost,
+            'places' => $places,
+            'id' => $id,
+            'session' => $session_id,
+            'hall' => $hall_id
+        ]);
+    }
+
+    public function ticket()
+    {
+        $places = [];
+        $session = $_POST['session'];
+        $hall = $_POST['hall'];
+
+        unset($_POST['session']);
+        unset($_POST['hall']);
+
+        foreach ($_POST as $key => $value) {
+            array_push($places, explode("-", $key));
+//            $this->database->store("tickets", );
+        }
+
+        var_dump($places);
+
+        foreach ($places as $place) {
+//            var_dump($place);
+            $data = [
+                "id_session" => $session,
+                "id_hall" => $hall,
+                "id_place" => $place[1],
+                "id_row" => $place[0],
+                "login" => "spyinfo"
+            ];
+            $this->database->store("tickets", $data);
+        }
+
+        echo $this->view->render("ticket", [
+
+        ]);
     }
 
     // TODO удалить потом

@@ -4,7 +4,7 @@
 
 <section class="section-session">
     <div class="container">
-        <form action="/payment  " method="POST" class="form">
+        <form action="<?= $film->id ;?>/payment" method="POST" class="form">
             <div class="about-film about-film_session">
                 <div class="about-film__img">
                     <img src="data:image/jpeg;base64,<?= base64_encode($film->image);?>" alt="<?= $film->name;?>" width="298px" height="298px">
@@ -40,12 +40,14 @@
                 <div class="hall-plan__rectangle"></div>
                 <div class="hall-plan__structure">
                     <?php foreach ($rows as $row):
-                          $isPlaceFound = Helpers::objectArraySearch($tickets, "id_row", $row->id_row);
+                          $isRowFound = Helpers::objectArraySearch($tickets, "id_row", $row->id_row);
                     ?>
                         <div class="hall-plan__row">
                             <div class="hall-plan__counter"><?= $row->start_place + array_search($row, $rows);?></div>
-                                <?php if ($isPlaceFound):?>
-                                    <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):?>
+                                <?php if ($isRowFound):?>
+                                    <?php for ($i = intval($row->start_place); $i <= intval($row->finish_place); $i++):
+                                          $isPlaceFound = Helpers::objectDoubleArraySearch($tickets, "id_place", $i, "id_row", $row->id_row);
+                                    ?>
                                         <?php if ($i == $isPlaceFound->id_place):?>
                                             <label>
                                                 <input type="checkbox" class="checkbox" data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>" disabled name="<?= $row->id_row . "-" . $i ;?>">
@@ -53,7 +55,7 @@
                                             </label>
                                         <?php else:?>
                                             <label>
-                                                <input type="checkbox" class="checkbox"data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>" name="<?= $row->id_row . "-" . $i ;?>">
+                                                <input type="checkbox" class="checkbox" data-row="<?= $row->id_row ;?>" data-place="<?= $i;?>" name="<?= $row->id_row . "-" . $i ;?>">
                                                 <span class="fake-checkbox"></span>
                                             </label>
                                         <?php endif;?>
@@ -72,6 +74,28 @@
                 </div>
             </div>
 
+
+            <div class="legend text-center">
+                <div class="legend__item">
+                    <div class="legend__square legend__square_selected"></div>
+                    <div class="legend__desc">
+                        Ваши места
+                    </div>
+                </div>
+                <div class="legend__item">
+                    <div class="legend__square legend__square_free"></div>
+                    <div class="legend__desc">
+                        <?= "Свободные места (" . $session->cost . " руб.)" ;?>
+                    </div>
+                </div>
+                <div class="legend__item">
+                    <div class="legend__square legend__square_engaged"></div>
+                    <div class="legend__desc">
+                        Купленные места
+                    </div>
+                </div>
+            </div>
+
             <div class="selected-places text-center"></div>
 
             <div class="buttons-session">
@@ -80,6 +104,11 @@
                 </div>
 
                 <div class="buy">
+                    <label>
+                        <input type="text" name="cost" value="<?= $session->cost;?>" hidden>
+                        <input type="text" name="session" value="<?= $session->id;?>" hidden>
+                        <input type="text" name="hall" value="<?= $hall->id;?>" hidden>
+                    </label>
                     <input type="submit" class="button default-button-form" value="Перейти к оформлению">
                 </div>
             </div>

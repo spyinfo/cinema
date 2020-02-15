@@ -7,19 +7,29 @@
 
             <div class="payment__info">
                 <div class="payment__places-selected">
-                    Мест выбрано: 2
+                    Мест выбрано: <?= $count ;?>
                 </div>
                 <div class="payment__cost">
-                    Стоимость места: 340 руб.
+                    Стоимость места: <?= $cost; ?> руб.
                 </div>
                 <div class="payment__total">
-                    Итого к оплате: <span class="payment__sum">680 руб.</span>
+                    Итого к оплате: <span class="payment__sum"><?= $total; ?> руб.</span>
                 </div>
             </div>
 
+            <form action="/film/<?=$id;?>/ticket" method="POST">
+            <?php foreach ($places as $place):?>
+                <label>
+                    <input type="text" name="<?= $place[0];?>-<?= $place[1];?>" hidden>
+                </label>
+            <?php endforeach;?>
             <div class="payment__button">
-                <a href="#" class="button">Оплатить</a>
+                <input type="text" hidden name="session" value="<?= $session ;?>">
+                <input type="text" hidden name="hall" value="<?= $hall ;?>">
+                <input type="submit" class="button default-button-form" value="Оплатить">
             </div>
+
+            </form>
         </div>
     </div>
 </section>
