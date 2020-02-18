@@ -1,0 +1,106 @@
+body {
+    font-size: 15px;
+}
+
+h2 {
+    font-size: 25px !important;
+}
+
+.default-title {
+    font-size: 35px !important;
+}
+
+/*.main-sidebar {*/
+    /*position: fixed;*/
+/*}*/
+
+/* DOTS */
+
+.my-dots {
+    position: absolute;
+    bottom: -45px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.my-dots li {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.my-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.my-dots li button:hover,
+.my-dots li button:focus {
+    outline: none;
+}
+
+.my-dots li button:hover:before,
+.my-dots li button:focus:before {
+    opacity: 0.75;
+}
+
+.my-dots li button:before {
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: url('../img/dots_active.svg');
+    text-align: center;
+    opacity: .25;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+.my-dots li.slick-active button:before {
+    opacity: 1;
+    color: black;
+}
+
+/* End DOTS */
+
+
+
+.slick-dotted.slick-slider {
+    margin: 0;
+}
+
+.gallery {
+    margin-top: 20px;
+    background: #fff;
+    padding: 35px 0 90px 0;
+}
+
+.gallery__images {
+    margin-top: 20px;
+}
+
+.arrow-active {
+    transform: rotate(-90deg);
+}

@@ -37,7 +37,7 @@
             </div>
 
             <div class="hall-plan">
-                <div class="hall-plan__rectangle"></div>
+                <div class="hall-plan__rectangle" style=""></div>
                 <div class="hall-plan__structure">
                     <?php foreach ($rows as $row):
                           $isRowFound = Helpers::objectArraySearch($tickets, "id_row", $row->id_row);

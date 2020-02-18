@@ -47,6 +47,21 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/film/{id}', ["App\controllers\HomeController", "film"]);
     $r->addRoute('POST', '/film/{id}/payment', ["App\controllers\HomeController", "payment"]);
     $r->addRoute('POST', '/film/{id}/ticket', ["App\controllers\HomeController", "ticket"]);
+
+
+    $r->addGroup('/admin', function (RouteCollector $r) {
+        $r->addRoute('GET', '', ["App\controllers\admin\LoginController", "index"]);
+
+        $r->addRoute('GET', '/home', ["App\controllers\admin\HomeController", "home"]);
+
+        $r->addRoute('GET', '/cinema', ["App\controllers\admin\CinemaController", "index"]);
+        $r->addRoute('GET', '/cinema/create', ["App\controllers\admin\CinemaController", "create"]);
+        $r->addRoute('POST', '/cinema/store', ["App\controllers\admin\CinemaController", "store"]);
+
+        $r->addRoute('GET', '/film', ["App\controllers\admin\FilmController", "index"]);
+        $r->addRoute('GET', '/film/create', ["App\controllers\admin\FilmController", "create"]);
+        $r->addRoute('POST', '/film/store', ["App\controllers\admin\FilmController", "store"]);
+    });
     // TODO удалить потом
 //    $r->addRoute('POST', '/test', ["App\controllers\HomeController", "test"]);
 });
@@ -66,14 +81,12 @@ switch ($routeInfo[0])
 {
     case FastRoute\Dispatcher::NOT_FOUND:
         // Ошибка 404. Страница не найдена
-//        abort(404);
-        echo "<div>Error 404.</div>";
+        Helpers::abort(404);
         break;
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
         $allowedMethods = $routeInfo[1];
         // Ошибка 405. Метод не разрешен
-//        abort(405);
-        echo "<div>Error 405.</div>";
+        Helpers::abort(405);
         break;
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];

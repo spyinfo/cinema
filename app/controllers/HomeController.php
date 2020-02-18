@@ -21,7 +21,8 @@ class HomeController
 
     public function index()
     {
-        $films = $this->database->getRow("films", 1);
+//        $films = $this->database->getRow("films", 1);
+        $films = $this->database->getAll("films");
         echo $this->view->render("home", ['films' => $films]);
     }
 

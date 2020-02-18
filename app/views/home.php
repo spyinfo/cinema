@@ -5,15 +5,17 @@ $this->layout('layout', ['title' => 'Главная']) ?>
 <section class="section-films">
     <div class="container">
         <div class="films">
+            <?php foreach ($films as $film):?>
             <div class="film">
                 <div class="film__name">
-                    <?= $films->name ;?>
+                    <?= $film->name ;?>
                 </div>
-                <img src="data:image/jpeg;base64,<?= base64_encode($films->image);?>" alt="<?= $films->name; ?>" width="298px" height="298px">
+                <img src="data:image/jpeg;base64,<?= base64_encode($film->image);?>" alt="<?= $film->name; ?>" width="298px" height="298px">
                 <div class="film__overlay">
-                    <a href="/film/<?= $films->id;?>" class="film__link">Купить билет</a>
+                    <a href="/film/<?= $film->id;?>" class="film__link">Купить билет</a>
                 </div>
             </div>
+            <?php endforeach;?>
         </div>
     </div>
 </section>

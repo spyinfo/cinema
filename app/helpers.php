@@ -1,6 +1,7 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
 use App\components\Database;
+use League\Plates\Engine;
 
 class Helpers
 {
@@ -43,6 +44,19 @@ class Helpers
         $pdo = (new Helpers)->getContainer()->get('PDO');
         $database = new Database($pdo);
         return $database->getSessionsForCinema($idFilm, $idCinema);
+    }
+
+    public static function abort($type)
+    {
+        $view = (new Helpers)->getContainer()->get(Engine::class);
+        switch ($type) {
+            case 404:
+                echo $view->render('errors/404'); exit;
+                break;
+            case 405:
+                echo $view->render('errors/405'); exit;
+                break;
+        }
     }
 
 
