@@ -20,13 +20,15 @@ class FilmController
 
     public function index()
     {
-        $films = $this->database->getAll("films");
+        $films = $this->database->getAll("getFilmsInAdmin");
+
         echo $this->view->render("admin/film/index", ['films' => $films]);
     }
 
     public function create()
     {
-        echo $this->view->render("admin/film/create");
+        $categories = $this->database->getAll("categories");
+        echo $this->view->render("admin/film/create", ['categories' => $categories]);
     }
 
     public function store()
@@ -42,8 +44,12 @@ class FilmController
 
         $this->database->store("films", $data);
         header("Location: /admin/film");
+    }
 
-//        $this->database->update("films", 1, $data);
+    public function delete($id)
+    {
+        $this->database->delete("films", $id);
+        header("Location: /admin/film");
     }
 
 }

@@ -14,6 +14,7 @@
     <!--  Styles  -->
     <!--    <link rel="stylesheet" href="/css/main.css">-->
     <!--    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="/static/css/main.css">-->
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/ionicons.min.css">
     <link rel="stylesheet" href="/assets/css/dataTables.bootstrap.min.css">

@@ -362,4 +362,16 @@ class Database
         $query->execute($params);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
+    public function getCinemaWithHalls($id_cinema, $id_hall)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM getCinemaWithHalls
+                                                         WHERE `id_cinema` = :id_cinema AND `hall_id` = :id_hall ");
+        $params = [
+            'id_cinema' => $id_cinema,
+            'id_hall' => $id_hall
+        ];
+        $query->execute($params);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
 }

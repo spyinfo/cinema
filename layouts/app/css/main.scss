@@ -64,24 +64,29 @@
 
     .films {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         flex-wrap: wrap;
     }
 
     .film {
-        margin-top: 91px;
         position: relative;
+        margin-top: 91px;
         overflow: hidden;
 
         img {
             position: relative;
-            width: 100%;
+            width: 298px !important;
+            height: 298px !important;
         }
 
         &__name {
-            font-size: 1.7rem;
-            text-align: center;
+            font-size: 1.28rem;
             margin-bottom: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 0; left: 5px;
+            opacity: 1;
+            transition: all ease-in-out 0.5s;
         }
     }
 
@@ -90,21 +95,27 @@
         justify-content: center;
         align-items: center;
         position: absolute;
-        width: 100%; height: 100%;
-        left: 0; top: 0;
-        opacity: 0;
+        width: 100%; height: 50%;
+        left: 0; bottom: 0;
+        opacity: 1;
         transition: all ease 0.5s;
         background-color: rgba(0, 0, 0, 0.56);
-    }
-
-    .film:hover .film__overlay {
-        opacity: 1;
     }
 
     .film__link {
         color: #fff;
         font-size: 1.3rem;
         border-bottom: 1px solid #fff;
+        opacity: 0;
+        transition: all ease-in-out 0.5s;
+    }
+
+    .film:hover .film__link {
+        opacity: 1;
+    }
+
+    .film:hover .film__name {
+        opacity: 0;
     }
 }
 
@@ -131,7 +142,7 @@
  ============================================*/
 
 .section-register {
-    padding: 117px 0 164px 0;
+    padding: 57px 0 164px 0;
     height: 100vh;
 }
 
@@ -168,6 +179,7 @@
         font-family: 'Lora', serif;
         font-size: 1.33rem;
     }
+
 }
 
 
@@ -276,6 +288,12 @@
     &__hall {
         font-size: 1.38rem;
         margin-top: 8px;
+    }
+
+    &__no-session {
+        text-align: center;
+        font-size: 1.45rem;
+        padding-top: 45px;
     }
 
 }

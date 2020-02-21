@@ -22,7 +22,7 @@ class HomeController
     public function index()
     {
 //        $films = $this->database->getRow("films", 1);
-        $films = $this->database->getAll("films");
+        $films = $this->database->getAll("films", true);
         echo $this->view->render("home", ['films' => $films]);
     }
 
@@ -125,6 +125,15 @@ class HomeController
         ]);
     }
 
+    public function register()
+    {
+        echo $this->view->render("register");
+    }
+
+    public function registerUser()
+    {
+        var_dump($_POST);
+    }
     // TODO удалить потом
 //    public function test()
 //    {

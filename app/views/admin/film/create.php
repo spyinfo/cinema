@@ -16,8 +16,13 @@
                                     <label for="name">Название</label>
                                     <input type="text" class="form-control" maxlength="255" name="name" id="name" >
 
-                                    <label for="id_category">Номер категории</label>
-                                    <input type="text" class="form-control" maxlength="255" name="id_category" id="id_category" >
+                                    <label for="id_category">Категория</label>
+<!--                                    <input type="text" class="form-control" maxlength="255" name="id_category" id="id_category" >-->
+                                    <select class="form-control" name="id_category" id="id_category">
+                                        <?php foreach($categories as $category): ?>
+                                            <option value="<?= $category->id;?>"><?= $category->name;?></option>
+                                        <?php endforeach;?>
+                                    </select>
 
                                     <label for="length">Длительность (мин)</label>
                                     <input type="text" class="form-control" maxlength="255" name="length" id="length" >

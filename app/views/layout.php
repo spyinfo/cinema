@@ -24,8 +24,8 @@
                     </h1>
                 </div>
                 <div class="head__right auth">
-                    <a href="register.html" class="button auth__button_register">Регистрация</a>
-                    <a href="#" class="button" id="login">Войти</a>
+                    <a href="/register" class="button auth__button_register">Регистрация</a>
+                    <a href="/login" class="button" id="login">Войти</a>
                 </div>
             </div>
         </div>

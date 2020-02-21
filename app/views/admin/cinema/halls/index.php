@@ -1,4 +1,4 @@
-<?php $this->layout('admin/layout', ['title' => 'Фильмы', 'second_title' => 'Film']); ?>
+<?php $this->layout('admin/layout', ['title' => 'Залы', 'second_title' => 'Cinema']); ?>
 
 <div class="content-wrapper">
     <section class="content container-fluid">
@@ -8,34 +8,31 @@
                 </div>
                 <div class="box-body">
                     <div class="box-header text-center">
-                        <h2 class="box-title default-title">Все фильмы</h2>
+                        <h2 class="box-title default-title">Все залы кинотеатра <strong><?= $cinema->name ;?></strong></h2>
                     </div>
                     <div class="box-body">
-                        <a href="/admin/film/create" class="btn btn-success">Добавить</a> <br>
+                        <a href="/admin/cinema/<?=$cinema->id;?>/halls/create" class="btn btn-success">Добавить зал</a> <br>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>Название</th>
-                                <th>Категория</th>
-                                <th>Длина (мин)</th>
-                                <th>Картинка</th>
+                                <th>ID</th>
+                                <th>Название зала</th>
+                                <th>Количество рядов</th>
                                 <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach($films as $row):?>
+                            <?php foreach($halls as $row):?>
                                 <tr>
+                                    <td><?= $row->id;?></td>
                                     <td><?= $row->name;?></td>
-                                    <td><?= $row->name_category;?></td>
-                                    <td><?= $row->length;?></td>
-                                    <td class="text-center">
-                                        <img src="data:image/jpeg;base64,<?= base64_encode($row->image);?>" alt="<?= $row->name;?>" width="100px" height="100px">
-                                    </td>
+                                    <td><?= $row->count_of_row;?></td>
                                     <td>
-                                        <a href="/admin/film/<?= $row->id;?>/edit" class="btn btn-warning">
+                                        <a href="/admin/cinema/<?=$cinema->id?>/halls/<?=$row->id;?>" class="btn btn-info">Схема зала</a>
+                                        <a href="/admin/cinema/<?= $row->id;?>/edit" class="btn btn-warning">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a href="/admin/film/<?= $row->id;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить кинотеатр?');">
+                                        <a href="/admin/cinema/<?= $row->id;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить этот зал?');">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>

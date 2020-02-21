@@ -18,32 +18,36 @@
         <div class="theatres">
             <h3 class="theatres__title text-center">Кинотеатры</h3>
 
-            <?php foreach ($cinemas as $cinema):?>
+            <?php if ($cinemas):?>
+                <?php foreach ($cinemas as $cinema):?>
+                    <div class="theatres__item">
+                        <div class="theatres__about">
+                            <div class="theatres__name">
+                                <?= $cinema->name;?>
+                            </div>
+                            <div class="theatres__address">
+                                <?= $cinema->street . " " . $cinema->house;?>
+                            </div>
+                        </div>
+                        <div class="theatres__times">
 
-            <div class="theatres__item">
-                <div class="theatres__about">
-                    <div class="theatres__name">
-                        <?= $cinema->name;?>
+                            <?php
+                                $sessions = Helpers::getSessionsForFilms($film->id, $cinema->id);
+                                foreach ($sessions as $session):?>
+
+                                    <a class="theatres__time"
+                                       href="?time=<?=date("H.i", strtotime($session->time));?>&date=<?=date("d.m.Y", strtotime($session->date));?>&cinema=<?=$cinema->name;?>">
+                                        <?= date("H:i", strtotime($session->time));?>
+                                    </a>
+                            <?php endforeach;?>
+                        </div>
                     </div>
-                    <div class="theatres__address">
-                        <?= $cinema->street . " " . $cinema->house;?>
-                    </div>
+                <?php endforeach;?>
+            <?php else:?>
+                <div class="theatres__no-session">
+                    К сожаленю, сейчас нет сеансов на данный фильм!
                 </div>
-                <div class="theatres__times">
-
-                    <?php
-                        $sessions = Helpers::getSessionsForFilms($film->id, $cinema->id);
-                        foreach ($sessions as $session):?>
-
-                            <a class="theatres__time"
-                               href="?time=<?=date("H.i", strtotime($session->time));?>&date=<?=date("d.m.Y", strtotime($session->date));?>&cinema=<?=$cinema->name;?>">
-                                <?= date("H:i", strtotime($session->time));?>
-                            </a>
-                    <?php endforeach;?>
-                </div>
-            </div>
-
-            <?php endforeach;?>
+            <?php endif;?>
         </div>
     </div>
 </section>

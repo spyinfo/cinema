@@ -48,6 +48,8 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('POST', '/film/{id}/payment', ["App\controllers\HomeController", "payment"]);
     $r->addRoute('POST', '/film/{id}/ticket', ["App\controllers\HomeController", "ticket"]);
 
+    $r->addRoute('GET', '/register', ["App\controllers\HomeController", "register"]);
+    $r->addRoute('POST', '/register/store', ["App\controllers\HomeController", "registerUser"]);
 
     $r->addGroup('/admin', function (RouteCollector $r) {
         $r->addRoute('GET', '', ["App\controllers\admin\LoginController", "index"]);
@@ -57,10 +59,21 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/cinema', ["App\controllers\admin\CinemaController", "index"]);
         $r->addRoute('GET', '/cinema/create', ["App\controllers\admin\CinemaController", "create"]);
         $r->addRoute('POST', '/cinema/store', ["App\controllers\admin\CinemaController", "store"]);
+        $r->addRoute('GET', '/cinema/{id}/edit', ["App\controllers\admin\CinemaController", "edit"]);
+        $r->addRoute('POST', '/cinema/{id}/update', ["App\controllers\admin\CinemaController", "update"]);
+        $r->addRoute('GET', '/cinema/{id}/delete', ["App\controllers\admin\CinemaController", "delete"]);
+
+        $r->addRoute('GET', '/cinema/{id}/halls', ["App\controllers\admin\CinemaController", "halls"]);
+        $r->addRoute('GET', '/cinema/{id}/halls/create', ["App\controllers\admin\CinemaController", "createHall"]);
+        $r->addRoute('POST', '/cinema/{id}/halls/store', ["App\controllers\admin\CinemaController", "storeHall"]);
+        $r->addRoute('POST', '/cinema/{id}/halls/storeHallPlaces', ["App\controllers\admin\CinemaController", "storeHallPlaces"]);
+        $r->addRoute('GET', '/cinema/{id_cinema}/halls/{id_hall}', ["App\controllers\admin\CinemaController", "showHall"]);
+
 
         $r->addRoute('GET', '/film', ["App\controllers\admin\FilmController", "index"]);
         $r->addRoute('GET', '/film/create', ["App\controllers\admin\FilmController", "create"]);
         $r->addRoute('POST', '/film/store', ["App\controllers\admin\FilmController", "store"]);
+        $r->addRoute('GET', '/film/{id}/delete', ["App\controllers\admin\FilmController", "delete"]);
     });
     // TODO удалить потом
 //    $r->addRoute('POST', '/test', ["App\controllers\HomeController", "test"]);

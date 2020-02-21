@@ -32,6 +32,7 @@
                                     <td><?= $row->street;?></td>
                                     <td><?= $row->house;?></td>
                                     <td>
+                                        <a href="/admin/cinema/<?=$row->id?>/halls" class="btn btn-info">Залы</a>
                                         <a href="/admin/cinema/<?= $row->id;?>/edit" class="btn btn-warning">
                                             <i class="fa fa-pencil"></i>
                                         </a>
