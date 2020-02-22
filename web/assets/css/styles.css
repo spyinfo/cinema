@@ -10,6 +10,21 @@ h2 {
     font-size: 35px !important;
 }
 
+
+
+#updated {
+    position: absolute;
+    top: 55%; right: -80px;
+    font-weight: bold;
+    color: #009204;
+    transition: 1s ease;
+    opacity: 0;
+}
+
+.updated {
+    opacity: 1 !important;
+}
+
 /*.main-sidebar {*/
     /*position: fixed;*/
 /*}*/

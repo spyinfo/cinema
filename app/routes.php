@@ -70,6 +70,12 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/cinema/{id_cinema}/halls/{id_hall}', ["App\controllers\admin\CinemaController", "showHall"]);
 
 
+        $r->addRoute('GET', '/session', ["App\controllers\admin\SessionController", "index"]);
+        $r->addRoute('GET', '/session/create', ["App\controllers\admin\SessionController", "create"]);
+        $r->addRoute('GET', '/session/{id}/halls', ["App\controllers\admin\SessionController", "getHallsForCinema"]);
+        $r->addRoute('POST', '/session/store', ["App\controllers\admin\SessionController", "store"]);
+
+
         $r->addRoute('GET', '/film', ["App\controllers\admin\FilmController", "index"]);
         $r->addRoute('GET', '/film/create', ["App\controllers\admin\FilmController", "create"]);
         $r->addRoute('POST', '/film/store', ["App\controllers\admin\FilmController", "store"]);
