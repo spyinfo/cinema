@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <label for="films">Фильм</label>
                                     <select name="films" id="films" class="form-control">
-                                        <option selected>--- Выберите фильм ---</option>
+                                        <option selected disabled>--- Выберите фильм ---</option>
                                         <?php foreach ($films as $film):?>
                                             <option value="<?= $film->id; ?>"><?=$film->name;?></option>
                                         <?php endforeach;?>
@@ -25,7 +25,7 @@
                                         <div class="col-6">
                                             <label for="cinemas">Кинотеатр</label>
                                             <select name="cinemas" id="cinemas" class="form-control">
-                                                <option value="0" selected>--- Выберите кинотеатр ---</option>
+                                                <option value="0" selected disabled>--- Выберите кинотеатр ---</option>
                                                 <?php foreach ($cinemas as $cinema):?>
                                                     <option value="<?=$cinema->id;?>"><?=$cinema->name;?></option>
                                                 <?php endforeach;?>
@@ -34,7 +34,7 @@
                                         <div class="col-6">
                                             <label for="halls">Залы</label>
                                             <select name="halls" id="halls" class="form-control">
-                                                <option selected>--- Выберите зал ---</option>
+                                                <option selected disabled>--- Выберите зал ---</option>
                                             </select>
                                             <div id="updated">Обновлено</div>
                                         </div>
@@ -54,6 +54,9 @@
                                             <input type="number" name="cost" id="cost" class="form-control" required>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="flash-input">
+                                    <?= flash(); ?>
                                 </div>
 
                                 <div class="form-group">

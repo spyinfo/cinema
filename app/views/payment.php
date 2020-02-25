@@ -18,14 +18,14 @@
             </div>
 
             <form action="/film/<?=$id;?>/ticket" method="POST">
+                <input type="text" hidden name="session" value="<?= $session ;?>">
+                <input type="text" hidden name="hall" value="<?= $hall ;?>">
             <?php foreach ($places as $place):?>
                 <label>
                     <input type="text" name="<?= $place[0];?>-<?= $place[1];?>" hidden>
                 </label>
             <?php endforeach;?>
             <div class="payment__button">
-                <input type="text" hidden name="session" value="<?= $session ;?>">
-                <input type="text" hidden name="hall" value="<?= $hall ;?>">
                 <input type="submit" class="button default-button-form" value="Оплатить">
             </div>
 

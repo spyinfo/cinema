@@ -24,6 +24,10 @@ body {
     text-align: center;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .border {
     font-weight: bold;
 }
@@ -68,6 +72,12 @@ select:active {
         box-shadow: 0 0 5px 5px rgba(0,0,0,.30) inset;
         color: rgba(255, 255, 255, 0.8);
     }
+
+    &:disabled {
+        background: #b76d66;
+        cursor: default;
+        box-shadow: none;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -84,7 +94,31 @@ h2 {
     color: #fff;
 }
 
+p {
+    margin: 0;
+}
+
 .default-button-form {
     border: none !important;
     cursor: pointer !important;
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }

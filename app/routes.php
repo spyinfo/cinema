@@ -48,14 +48,34 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('POST', '/film/{id}/payment', ["App\controllers\HomeController", "payment"]);
     $r->addRoute('POST', '/film/{id}/ticket', ["App\controllers\HomeController", "ticket"]);
 
-    $r->addRoute('GET', '/register', ["App\controllers\HomeController", "register"]);
-    $r->addRoute('POST', '/register/store', ["App\controllers\HomeController", "registerUser"]);
+    // Register
+    $r->addRoute('GET', '/register', ["App\controllers\RegisterController", "home"]);
+    $r->addRoute('POST', '/register/store', ["App\controllers\RegisterController", "store"]);
 
-    $r->addGroup('/admin', function (RouteCollector $r) {
+
+    $r->addRoute('GET', '/logout', ["App\controllers\admin\LoginController", "logout"]);
+
+    $r->addRoute('GET', '/profile', ["App\controllers\ProfileController", "index"]);
+
+    // Login
+    $r->addGroup('/login', function (RouteCollector $r) {
         $r->addRoute('GET', '', ["App\controllers\admin\LoginController", "index"]);
+        $r->addRoute('POST', '/check', ["App\controllers\admin\LoginController", "login"]);
+
+    });
+
+    // API
+    $r->addGroup('/api', function (RouteCollector $r) {
+        $r->addRoute('GET', '/user/{login}', ["App\controllers\APIController", "isExistLogin"]);
+    });
+
+    // Admin
+    $r->addGroup('/admin', function (RouteCollector $r) {
+        $r->addRoute('GET', '', ["App\controllers\admin\HomeController", "index"]);
 
         $r->addRoute('GET', '/home', ["App\controllers\admin\HomeController", "home"]);
 
+        // CINEMA
         $r->addRoute('GET', '/cinema', ["App\controllers\admin\CinemaController", "index"]);
         $r->addRoute('GET', '/cinema/create', ["App\controllers\admin\CinemaController", "create"]);
         $r->addRoute('POST', '/cinema/store', ["App\controllers\admin\CinemaController", "store"]);
@@ -63,6 +83,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('POST', '/cinema/{id}/update', ["App\controllers\admin\CinemaController", "update"]);
         $r->addRoute('GET', '/cinema/{id}/delete', ["App\controllers\admin\CinemaController", "delete"]);
 
+        // CINEMA'S HALLS
         $r->addRoute('GET', '/cinema/{id}/halls', ["App\controllers\admin\CinemaController", "halls"]);
         $r->addRoute('GET', '/cinema/{id}/halls/create', ["App\controllers\admin\CinemaController", "createHall"]);
         $r->addRoute('POST', '/cinema/{id}/halls/store', ["App\controllers\admin\CinemaController", "storeHall"]);
@@ -70,16 +91,24 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/cinema/{id_cinema}/halls/{id_hall}', ["App\controllers\admin\CinemaController", "showHall"]);
 
 
+        // SESSION
         $r->addRoute('GET', '/session', ["App\controllers\admin\SessionController", "index"]);
         $r->addRoute('GET', '/session/create', ["App\controllers\admin\SessionController", "create"]);
-        $r->addRoute('GET', '/session/{id}/halls', ["App\controllers\admin\SessionController", "getHallsForCinema"]);
         $r->addRoute('POST', '/session/store', ["App\controllers\admin\SessionController", "store"]);
 
 
+        // FILM
         $r->addRoute('GET', '/film', ["App\controllers\admin\FilmController", "index"]);
         $r->addRoute('GET', '/film/create', ["App\controllers\admin\FilmController", "create"]);
         $r->addRoute('POST', '/film/store', ["App\controllers\admin\FilmController", "store"]);
+        $r->addRoute('GET', '/film/{id}/edit', ["App\controllers\admin\FilmController", "edit"]);
+        $r->addRoute('POST', '/film/{id}/update', ["App\controllers\admin\FilmController", "update"]);
         $r->addRoute('GET', '/film/{id}/delete', ["App\controllers\admin\FilmController", "delete"]);
+
+
+        // API
+        $r->addRoute('GET', '/api/halls/{id}', ["App\controllers\admin\APIController", "getHalls"]);
+
     });
     // TODO удалить потом
 //    $r->addRoute('POST', '/test', ["App\controllers\HomeController", "test"]);

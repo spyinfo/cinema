@@ -31,6 +31,8 @@
     <!--    <link rel="stylesheet" href="/css/media.css">-->
     <!--  End Styles  -->
 
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/icon/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

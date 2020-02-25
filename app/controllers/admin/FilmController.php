@@ -21,7 +21,6 @@ class FilmController
     public function index()
     {
         $films = $this->database->getAll("getFilmsInAdmin");
-
         echo $this->view->render("admin/film/index", ['films' => $films]);
     }
 
@@ -43,6 +42,32 @@ class FilmController
         ];
 
         $this->database->store("films", $data);
+        header("Location: /admin/film");
+    }
+
+    public function edit($id)
+    {
+        $film = $this->database->getRow("films", $id);
+        $categories = $this->database->getAll("categories");
+
+        echo $this->view->render("admin/film/edit", [
+            'film' => $film,
+            'categories' => $categories
+        ]);
+    }
+
+    public function update($id)
+    {
+        $file = file_get_contents($_FILES["image"]["tmp_name"]);
+        $data = [
+            "name" => $_POST['name'],
+            "id_category" => $_POST['id_category'],
+            "annotation" => $_POST['annotation'],
+            "length" => $_POST['length'],
+            "image" => $file
+        ];
+
+        $this->database->update("films", $id, $data);
         header("Location: /admin/film");
     }
 

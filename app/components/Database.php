@@ -374,4 +374,21 @@ class Database
         $query->execute($params);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
+    public function isPlacesNotFree($session, $hall, $row, $place)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM tickets
+                                                         WHERE id_session = :id_session AND 
+                                                               id_row = :id_row AND    
+                                                               id_place = :id_place AND
+                                                               id_hall = :id_hall");
+        $params = [
+            'id_session' => $session,
+            'id_row' => $row,
+            'id_place' => $place,
+            'id_hall' => $hall
+        ];
+        $query->execute($params);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }

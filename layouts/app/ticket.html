@@ -31,36 +31,82 @@
     </div>
 </header>
 
+<script src="js/qrcode.min.js"></script>
 <section class="section-ticket">
     <div class="container">
-        <div class="congratulations text-center">
-            <div class="congratulations__head">
+        <div class="congratulations">
+            <div class="congratulations__head text-center">
                 Поздравляем, Вы успешно оплатили билет!
             </div>
-            <div class="congratulations__ticket">
-                Ваш код билета: <span class="border">WFOSXQZ</span>
+            <div class="congratulations__ticket text-center">
+                Вам необходимо распечатать билет!
+            </div>
+
+            <div class="print text-center">
+                <a href="#" id="print" class="button">Распечатать</a>
             </div>
             <div class="congratulations__desc">
-
-                Подробности про ваш сеанс:
-
-                <div class="congratulations__item">
-                    Фильм: Звездные войны
+                <div class="congratulations__film text-center">
+                    <strong>Звездные войны</strong>
                 </div>
-                <div class="congratulations__item">
-                    Кинотеатр: Каро 9
+                <div class="congratulations__main">
+                    <div>
+                        <div class="congratulations__cinema">
+                            Каро 7
+                        </div>
+                        <div class="congratulations__address">
+                            ул. Земляной Вал д. 23
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div>
+                            Зал 1
+                        </div>
+                        <div class="congratulations__date_time">
+                            23.02.2020 15:00
+                        </div>
+                    </div>
                 </div>
-                <div class="congratulations__item">
-                    Адрес: ул. Ходынский бульвар дом 9
+                <div class="congratulations__places text-center">
+                    <span class="border">Места</span>
+                    <div>
+                        [2 ряд 1 место]
+                    </div>
+                    <div>
+                        [2 ряд 2 место]
+                    </div>
+                    <div>
+                        [2 ряд 3 место]
+                    </div>
+                    <div>
+                        [2 ряд 4 место]
+                    </div>
+                    <div>
+                        [2 ряд 5 место]
+                    </div>
+                    <div>
+                        [3 ряд 1 место]
+                    </div>
+                    <div>
+                        [3 ряд 2 место]
+                    </div>
+                    <div>
+                        [3 ряд 2 место]
+                    </div>
+                    <div>
+                        [3 ряд 1 место]
+                    </div>
+                    <div>
+                        [3 ряд 2 место]
+                    </div>
                 </div>
-                <div class="congratulations__item">
-                    Дата и время: 06.02.2020 15:00
-                </div>
+                <div class="qrcode"></div>
+                <script>new QRCode(document.querySelector(".qrcode"), {
+                    text: "WFAPOGTR",
+                    width: 164,
+                    height: 164,
+                });</script>
             </div>
-        </div>
-
-        <div class="text-center">
-            <a href="/" class="button">На главную</a>
         </div>
     </div>
 </section>
@@ -76,6 +122,7 @@
     </div>
 </footer>
 <script src="js/jquery.min.js"></script>
+<script src="js/jQuery.print.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

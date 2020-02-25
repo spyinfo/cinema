@@ -8,13 +8,14 @@ use App\components\Database;
 use Helpers;
 use League\Plates\Engine;
 
-class CinemaController
+class CinemaController extends Controller
 {
     private $view;
     private $database;
 
     public function __construct(Engine $view, Database $database)
     {
+        parent::__construct();
         $this->view = $view;
         $this->database = $database;
     }

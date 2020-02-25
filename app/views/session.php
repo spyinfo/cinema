@@ -109,7 +109,12 @@
                         <input type="text" name="session" value="<?= $session->id;?>" hidden>
                         <input type="text" name="hall" value="<?= $hall->id;?>" hidden>
                     </label>
-                    <input type="submit" class="button default-button-form" value="Перейти к оформлению">
+                    <?php if (\App\components\Roles::getRole()):?>
+                        <input type="submit" class="button default-button-form" value="Перейти к оформлению">
+                    <?php else:?>
+                        <input type="submit" class="button default-button-form" value="Перейти к оформлению" disabled>
+                        <span>Вы не зарегистрированы, поэтому не можете купить билет!</span>
+                    <?php endif;?>
                 </div>
             </div>
         </form>

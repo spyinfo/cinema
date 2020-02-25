@@ -20,9 +20,17 @@
                 </label>
                 <input type="text" class="form__input" placeholder="Имя">
                 <input type="text" class="form__input" placeholder="Дата рождения">
-                <input type="text" class="form__input" placeholder="Логин">
+
+                <label for="login" class="login-label">
+                    <input type="text" class="form__input" placeholder="Логин" id="login">
+                </label>
+                <div id="exist">
+<!--                                    <div class="already-exist text-center">Этот логин уже занят!</div>-->
+                    <div class="not-exist text-center">Этот логин свободен!</div>
+                </div>
+
                 <input type="password" class="form__input" placeholder="Пароль">
-                <input type="submit" class="button form__button" value="Зарегистрироваться">
+                <input type="submit" class="button form__button" value="Зарегистрироваться" disabled>
             </form>
         </div>
     </section>

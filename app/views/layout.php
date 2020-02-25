@@ -1,3 +1,4 @@
+<?php use App\components\Roles;?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -5,6 +6,8 @@
 <!--    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/icon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/icon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/static/css/main.css">
     <title><?= $this->e($title);?></title>
 </head>
@@ -24,8 +27,15 @@
                     </h1>
                 </div>
                 <div class="head__right auth">
-                    <a href="/register" class="button auth__button_register">Регистрация</a>
-                    <a href="/login" class="button" id="login">Войти</a>
+                    <?php if (Roles::getRole() == Roles::ADMIN):?>
+                        <a href="/admin" class="button auth__button_register">Панель админа</a>
+                        <a href="/profile" class="button">Личный кабинет</a>
+                    <?php elseif (Roles::getRole() == Roles::USER):?>
+                        <a href="/profile" class="button">Личный кабинет</a>
+                    <?php else:?>
+                        <a href="/register" class="button auth__button_register">Регистрация</a>
+                        <a href="/login" class="button" id="login">Войти</a>
+                    <?php endif;?>
                 </div>
             </div>
         </div>
@@ -45,6 +55,7 @@
     </footer>
 
     <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jQuery.print.min.js"></script>
     <script src="/static/js/main.js"></script>
 </body>
 </html>

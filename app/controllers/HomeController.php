@@ -3,6 +3,7 @@
 namespace App\controllers;
 
 use App\components\Database;
+use Helpers;
 use League\Plates\Engine;
 use \Tamtamchik\SimpleFlash\Flash;
 
@@ -21,7 +22,6 @@ class HomeController
 
     public function index()
     {
-//        $films = $this->database->getRow("films", 1);
         $films = $this->database->getAll("films", true);
         echo $this->view->render("home", ['films' => $films]);
     }
@@ -36,14 +36,7 @@ class HomeController
             $rows = $this->database->getAllCondition("rows", "id_hall", $session->id_hall);
             $hall = $this->database->getRow("halls", $session->id_hall);
             $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
-            //            $places = $this->database->getAllCondition("places", "id_hall", $session->id_hall);
-//            var_dump("sessions", $session);
-//            var_dump("tickets", $tickets);;
-//            var_dump("session", $session);
-//            var_dump("cinema", $cinema);
-//            var_dump("rows", $rows);
-            var_dump("hall", $hall);
-//            var_dump("places", $places);
+
             echo $this->view->render("session", [
                 'cinema' => $cinema,
                 'film' => $film,
@@ -68,9 +61,7 @@ class HomeController
         $session_id = $_POST['session'];
         $hall_id = $_POST['hall'];
 
-        unset($_POST['cost']);
-        unset($_POST['session']);
-        unset($_POST['hall']);
+        unset($_POST['cost'], $_POST['session'], $_POST['hall']);
 
         $countOfPlaces = count($_POST);
         $total = $countOfPlaces * $cost;
@@ -92,53 +83,38 @@ class HomeController
         ]);
     }
 
-    public function ticket()
+    public function ticket($id)
     {
         $places = [];
         $session = $_POST['session'];
         $hall = $_POST['hall'];
 
-        unset($_POST['session']);
-        unset($_POST['hall']);
+        $sessionInfo = $this->database->getRow("getSessionWithFilmAndHall", $session);
+
+        unset($_POST['session'], $_POST['hall']);
 
         foreach ($_POST as $key => $value) {
             array_push($places, explode("-", $key));
-//            $this->database->store("tickets", );
         }
 
-        var_dump($places);
-
         foreach ($places as $place) {
-//            var_dump($place);
             $data = [
                 "id_session" => $session,
                 "id_hall" => $hall,
                 "id_place" => $place[1],
                 "id_row" => $place[0],
-                "login" => "spyinfo"
+                "login" => "spyinfo",
             ];
+
+            $isPLaceNotFree = $this->database->isPlacesNotFree($session, $hall, $place[0], $place[1]);
+            if ($isPLaceNotFree) break;
+
             $this->database->store("tickets", $data);
         }
 
         echo $this->view->render("ticket", [
-
+            'sessionInfo' => $sessionInfo,
+            'places' => $places,
         ]);
     }
-
-    public function register()
-    {
-        echo $this->view->render("register");
-    }
-
-    public function registerUser()
-    {
-        var_dump($_POST);
-    }
-    // TODO удалить потом
-//    public function test()
-//    {
-//        $file = file_get_contents($_FILES["file"]["tmp_name"]);
-//        $data = ["image" => $file];
-//        $this->database->update("films", 1, $data);
-//    }
 }

@@ -19,8 +19,3 @@ $this->layout('layout', ['title' => 'Главная']) ?>
         </div>
     </div>
 </section>
-
-<!--<form action="/test" method="POST" enctype="multipart/form-data">-->
-<!--    <input type="file" name="file" required/>-->
-<!--    <input type="submit">-->
-<!--</form>-->

@@ -35,7 +35,7 @@
                                         <a href="/admin/film/<?= $row->id;?>/edit" class="btn btn-warning">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a href="/admin/film/<?= $row->id;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить кинотеатр?');">
+                                        <a href="/admin/film/<?= $row->id;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить фильм?');">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>

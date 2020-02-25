@@ -159,13 +159,15 @@
         border-radius: 10px;
         width: 374px;
         padding: 12px 4px 12px 15px;
-        border: none;
+        border: 2px solid #0C171B;
         display: block;
         margin: 47px auto 0 auto;
 
         &:focus {
-            // при наведении что-то будет
+            border: 2px solid #3b30ff;
         }
+
+
     }
 
     &__button {
@@ -182,6 +184,23 @@
 
 }
 
+.login-label {
+    display: block;
+}
+
+.already-exist {
+    color: #ff0000;
+}
+
+.not-exist {
+    color: #00a65a;
+}
+
+.flash-login {
+    font-size: 1.3rem;
+    display: inline-block;
+    margin-top: 20px;
+}
 
 /*=============================================
  =================== FILM =====================
@@ -511,25 +530,31 @@
  ============================================*/
 
 .section-ticket {
-    padding: 117px 0 142px 0;
+    padding: 87px 0 142px 0;
 }
 
 .congratulations {
     font-size: 1.9rem;
     padding-bottom: 70px;
 
-    &__head {
-
-    }
+    &__head {}
 
     &__ticket {
         margin-top: 29px;
+        font-size: 1.5rem;
+    }
+
+    &__film {
+        font-size: 1.3rem;
     }
 
     &__desc {
-        margin-top: 80px;
-        font-size: 1.7rem;
-
+        margin: 30px auto 0 auto;
+        padding: 20px;
+        font-size: 1.1rem;
+        width: 800px;
+        color: #000000;
+        background: #fff;
     }
 
     &__item {
@@ -537,8 +562,37 @@
         margin-bottom: 8px;
     }
 
+    &__address {
+        font-size: 1rem;
+    }
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+    }
+
+    &__places {
+        margin-top: 25px;
+
+        span {
+            display: block;
+        }
+    }
+
+    &__places > div {
+        display: inline-block;
+    }
+
     &__item:nth-child(1) {
         margin-top: 20px;
     }
 }
 
+.print {
+    margin-top: 20px;
+}
+
+.qrcode img {
+    margin: 30px auto 0 auto;
+}

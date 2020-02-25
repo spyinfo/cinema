@@ -51,13 +51,23 @@ class Helpers
         $view = (new Helpers)->getContainer()->get(Engine::class);
         switch ($type) {
             case 404:
-                echo $view->render('errors/404'); exit;
+                echo $view->render('errors/404');
                 break;
             case 405:
-                echo $view->render('errors/405'); exit;
+                echo $view->render('errors/405');
                 break;
         }
+        exit;
     }
 
-
+    public static function generateTicket($length = 8)
+    {
+        $characters = 'ABCDEFGHIKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 }

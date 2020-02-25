@@ -11,6 +11,7 @@
                         <h2 class="box-title default-title">Все залы кинотеатра <strong><?= $cinema->name ;?></strong></h2>
                     </div>
                     <div class="box-body">
+                        <a href="/admin/cinema" class="btn btn-dark">Назад</a>
                         <a href="/admin/cinema/<?=$cinema->id;?>/halls/create" class="btn btn-success">Добавить зал</a> <br>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>

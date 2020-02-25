@@ -25,6 +25,14 @@ h2 {
     opacity: 1 !important;
 }
 
+.flash-input {
+    margin: 15px 0;
+}
+
+.flash-input p {
+    margin: 0;
+}
+
 /*.main-sidebar {*/
     /*position: fixed;*/
 /*}*/
