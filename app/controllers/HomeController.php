@@ -3,6 +3,7 @@
 namespace App\controllers;
 
 use App\components\Database;
+use App\components\Roles;
 use Helpers;
 use League\Plates\Engine;
 use \Tamtamchik\SimpleFlash\Flash;
@@ -103,7 +104,7 @@ class HomeController
                 "id_hall" => $hall,
                 "id_place" => $place[1],
                 "id_row" => $place[0],
-                "login" => "spyinfo",
+                "login" => Roles::getLogin(),
             ];
 
             $isPLaceNotFree = $this->database->isPlacesNotFree($session, $hall, $place[0], $place[1]);

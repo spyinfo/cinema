@@ -5,7 +5,7 @@
         <section class="content">
             <div class="box">
                 <div class="box-body text-center p-5">
-                    <h3>Здравствуйте <strong>manager39</strong>!</h3>
+                    <h3>Здравствуйте <strong><?=\App\components\Roles::getLogin();?></strong>!</h3>
                     <h3>Добро пожаловать в панель управления содержимым сайта!</h3>
                 </div>
             </div>

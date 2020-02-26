@@ -391,4 +391,16 @@ class Database
         $query->execute($params);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getOrders($login)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM getinfoaboutuser
+                                                         WHERE login = :login
+                                                         GROUP BY id_session");
+        $params = [
+            'login' => $login
+        ];
+        $query->execute($params);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }

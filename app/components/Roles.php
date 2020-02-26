@@ -13,4 +13,9 @@ final class Roles
     {
         return (($_SESSION['user'])) ? ($_SESSION['user']->id_role == Roles::USER ? Roles::USER : Roles::ADMIN ) : false;
     }
+
+    public static function getLogin()
+    {
+        return (($_SESSION['user'])) ? $_SESSION['user']->login : false;
+    }
 }

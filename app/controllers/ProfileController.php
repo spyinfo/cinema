@@ -5,6 +5,7 @@ namespace App\controllers;
 
 
 use App\components\Database;
+use App\components\Roles;
 use League\Plates\Engine;
 use Tamtamchik\SimpleFlash\Flash;
 
@@ -23,7 +24,15 @@ class ProfileController
 
     public function index()
     {
-        echo "Вы вошли";
-        var_dump($_SESSION['user']);
+        echo $this->view->render("profile/profile");
+    }
+
+    public function orders()
+    {
+        $login = Roles::getLogin();
+        $orders = $this->database->getOrders($login);
+        echo $this->view->render("profile/orders", [
+            'orders' => $orders
+        ]);
     }
 }

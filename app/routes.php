@@ -56,6 +56,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/logout', ["App\controllers\admin\LoginController", "logout"]);
 
     $r->addRoute('GET', '/profile', ["App\controllers\ProfileController", "index"]);
+    $r->addRoute('GET', '/profile/orders', ["App\controllers\ProfileController", "orders"]);
 
     // Login
     $r->addGroup('/login', function (RouteCollector $r) {

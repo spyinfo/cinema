@@ -596,3 +596,38 @@
 .qrcode img {
     margin: 30px auto 0 auto;
 }
+
+
+/*=============================================
+================== PROFILE ====================
+ ============================================*/
+.profile {
+    background: #212227;
+}
+
+.section-profile-header {
+    padding: 80px 0;
+    background: #0C171B;
+
+    &__title {
+        font-size: 4rem;
+    }
+}
+
+.section-profile-main {
+
+    &__rows {
+        font-size: 1.4rem;
+    }
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__button {
+        display: inline-block;
+        width: 275px;
+        margin: 33px 0;
+    }
+}
