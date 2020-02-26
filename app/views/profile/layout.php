@@ -317,6 +317,7 @@
 <?= $this->section('content'); ?>
 
 <script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/main.js"></script>
+<script src="/static/js/jQuery.print.min.js"></script>
+<script src="/static/js/ticket.js"></script>
 </body>
 </html>

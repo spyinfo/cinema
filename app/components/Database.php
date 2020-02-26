@@ -164,6 +164,21 @@ class Database
 
 
 
+
+    public function getRow2Condition($table, $fstColumn, $fstValue, $sndColumn, $sndValue)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM $table WHERE $fstColumn = :fstValue AND $sndColumn = :sndValue");
+        $params = [
+            'fstValue' => $fstValue,
+            'sndValue' => $sndValue
+        ];
+        $query->execute($params);
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
+
     /**
      * * Возвращает строки удовлетворяющие условию $column = $value
      *

@@ -41,6 +41,12 @@ $( function () {
         });
     });
 
+    $("#print-ticket").on("click", function () {
+        $(".congratulations__desc").print({
+            iframe: false
+        });
+    });
+
     // Проверка занятности login
     $("#login").on("blur", function () {
         const value = $(this).val();

@@ -1,1 +1,72 @@
-$((function(){const e=$(".fake-checkbox");$(e).not(".fake-checkbox_not-active").each((function(e){$(this).prev().is(":checked")&&$(this).prev().prop("checked",!1)})),$(e).not(".fake-checkbox_not-active").on("click",(function(e){const c=$(this).prev(),t=c.data("row"),a=c.data("place"),n=`\n            <div class="selected-places__item" data-place-selected="${a}" data-row-selected="${t}">\n                <div class="selected-places__place">\n                    ${a} место\n                </div>\n                <div class="selected-places__row">\n                    ${t} ряд\n                </div>\n            </div>\n        `;c.is(":checked")?$(`*[data-row-selected="${t}"][data-place-selected="${a}"]`).remove():$(".selected-places").append(n)})),$("#print").on("click",(function(){$(".congratulations__desc").print({iframe:!1})})),$("#login").on("blur",(function(){const e=$(this).val(),c=$("#exist");c.empty(),e&&$.ajax({url:`http://cinema/api/user/${e}`,type:"GET",success:function(e){"true"===e?($(c).append('<div class="already-exist text-center">Этот логин уже занят!</div>'),$("#register").prop("disabled",!0)):($(c).append('<div class="not-exist text-center">Этот логин свободен!</div>'),$("#register").prop("disabled",!1))},error:function(e,c){console.log("Ошибка при получении данных!"),alert("Ошибка при получении данных!")}})}))}));
+$( function () {
+
+    const checkbox = $(".fake-checkbox");
+
+    // Переключаем на false все input-ы
+    $(checkbox).not(".fake-checkbox_not-active").each(function (item) {
+        if ($(this).prev().is(":checked")) {
+            $(this).prev().prop("checked", false);
+        }
+    });
+
+    // Обработка клика на input
+    // noinspection DuplicatedCode
+    $(checkbox).not(".fake-checkbox_not-active").on('click', function (e) {
+        const input = $(this).prev();
+
+        const row   = input.data("row");
+        const place = input.data("place");
+
+        const placeHTML = `
+            <div class="selected-places__item" data-place-selected="${place}" data-row-selected="${row}">
+                <div class="selected-places__place">
+                    ${place} место
+                </div>
+                <div class="selected-places__row">
+                    ${row} ряд
+                </div>
+            </div>
+        `;
+
+        if (!input.is(":checked")) {
+            $(".selected-places").append(placeHTML);
+        } else {
+            $(`*[data-row-selected="${row}"][data-place-selected="${place}"]`).remove();
+        }
+    });
+
+    // Print
+    $("#print").on("click", function () {
+        $(".congratulations__desc").print({
+            iframe: false
+        });
+    });
+
+    // Проверка занятности login
+    // noinspection DuplicatedCode
+    $("#login").on("blur", function () {
+        const value = $(this).val();
+        const exist = $("#exist");
+        exist.empty();
+
+        if (value) {
+            $.ajax({
+                url: `http://cinema/api/user/${value}`,
+                type: "GET",
+                success: function (response) {
+                    if (response === "true") {
+                        $(exist).append("<div class=\"already-exist text-center\">Этот логин уже занят!</div>");
+                        $("#register").prop("disabled", true);
+                    } else {
+                        $(exist).append("<div class=\"not-exist text-center\">Этот логин свободен!</div>");
+                        $("#register").prop("disabled", false);
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    console.log("Ошибка при получении данных!");
+                    alert("Ошибка при получении данных!");
+                }
+            });
+        }
+    });
+});

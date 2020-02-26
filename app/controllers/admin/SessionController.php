@@ -8,7 +8,7 @@ use App\components\Database;
 use League\Plates\Engine;
 use Tamtamchik\SimpleFlash\Flash;
 
-class SessionController
+class SessionController extends Controller
 {
     private $view;
     private $database;
@@ -16,6 +16,7 @@ class SessionController
 
     public function __construct(Engine $view, Database $database, Flash $flash)
     {
+        parent::__construct();
         $this->view = $view;
         $this->database = $database;
         $this->flash = $flash;

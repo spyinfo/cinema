@@ -35,4 +35,16 @@ class ProfileController
             'orders' => $orders
         ]);
     }
+
+    public function ticket()
+    {
+        $login = Roles::getLogin();
+        $sessionInfo = $this->database->getRow("getSessionWithFilmAndHall", $_GET['session']);
+        $places = $this->database->getRow2Condition("tickets", "id_session", $sessionInfo->id, "login", $login);
+
+        echo $this->view->render("profile/ticket", [
+            'sessionInfo' => $sessionInfo,
+            'places' => $places
+        ]);
+    }
 }

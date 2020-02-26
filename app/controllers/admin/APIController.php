@@ -4,12 +4,13 @@ namespace App\controllers\admin;
 
 use App\components\Database;
 
-class APIController
+class APIController extends Controller
 {
     private $database;
 
     public function __construct(Database $database)
     {
+        parent::__construct();
         $this->database = $database;
     }
 

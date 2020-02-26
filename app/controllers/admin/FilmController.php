@@ -7,13 +7,14 @@ namespace App\controllers\admin;
 use App\components\Database;
 use League\Plates\Engine;
 
-class FilmController
+class FilmController extends Controller
 {
     private $view;
     private $database;
 
     public function __construct(Engine $view, Database $database)
     {
+        parent::__construct();
         $this->view = $view;
         $this->database = $database;
     }

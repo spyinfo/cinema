@@ -8,6 +8,7 @@
             <th scope="col">Фильм</th>
             <th scope="col">Кинотеатр</th>
             <th scope="col">Зал</th>
+            <th scope="col">Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -17,6 +18,9 @@
                 <td class="text-center"><?=$order->film_name;?></td>
                 <td class="text-center"><?=$order->cinema_name;?></td>
                 <td class="text-center"><?=$order->hall;?></td>
+                <td class="text-center">
+                    <a href="/profile/orders/ticket?session=<?=$order->id_session;?>&user=<?=$order->login;?>">Распечатать билет</a>
+                </td>
             </tr>
         <?php endforeach;?>
         </tbody>
