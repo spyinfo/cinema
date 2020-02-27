@@ -56,6 +56,9 @@ class Helpers
             case 405:
                 echo $view->render('errors/405');
                 break;
+            case "MobileTable":
+                echo $view->render('errors/MobileTablet');
+                break;
         }
         exit;
     }

@@ -6,7 +6,8 @@
         "tamtamchik/simple-flash": "^1.2",
         "intervention/image": "^2.5",
         "phpmailer/phpmailer": "^5.2.16",
-        "ext-json": "*"
+        "ext-json": "*",
+        "mobiledetect/mobiledetectlib": "^2.8"
     },
     "autoload": {
         "psr-4": {

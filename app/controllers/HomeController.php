@@ -8,17 +8,23 @@ use Helpers;
 use League\Plates\Engine;
 use \Tamtamchik\SimpleFlash\Flash;
 
-class HomeController
+class HomeController extends Controller
 {
     private $view;
     private $database;
     private $flash;
+    /**
+     * @var \Mobile_Detect
+     */
+    private $detect;
 
-    public function __construct(Engine $view, Database $database, Flash $flash)
+    public function __construct(Engine $view, Database $database, Flash $flash, \Mobile_Detect $detect)
     {
         $this->view = $view;
         $this->database = $database;
         $this->flash = $flash;
+        $this->detect = $detect;
+        parent::__construct($this->detect);
     }
 
     public function index()
