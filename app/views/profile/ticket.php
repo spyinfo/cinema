@@ -1,6 +1,7 @@
 <?php $this->layout('profile/layout', ['title' => 'Заказы', 'h1' => 'Распечатать билет']) ?>
 
-<div class="congratulations">
+<div class="congratulations text-center" style="padding-top: 35px;">
+    <a href="/profile/orders" class="button">Назад</a>
     <div class="congratulations__desc" id="print-ticket">
         <div class="congratulations__film text-center">
             <strong><?=$sessionInfo->name_film;?></strong>
@@ -32,4 +33,5 @@
             <?php endforeach;?>
         </div>
     </div>
+    <small>Обновите страницу, чтобы распечатать билет!</small>
 </div>

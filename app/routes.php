@@ -5,8 +5,6 @@ use FastRoute\RouteCollector;
 use League\Plates\Engine;
 use Tamtamchik\SimpleFlash\Flash;
 
-session_start();
-
 $containerBuilder = new ContainerBuilder;
 
 $containerBuilder->addDefinitions([
@@ -106,6 +104,10 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/film/{id}/edit', ["App\controllers\admin\FilmController", "edit"]);
         $r->addRoute('POST', '/film/{id}/update', ["App\controllers\admin\FilmController", "update"]);
         $r->addRoute('GET', '/film/{id}/delete', ["App\controllers\admin\FilmController", "delete"]);
+
+        // USER
+        $r->addRoute('GET', '/user', ["App\controllers\admin\UserController", "index"]);
+        $r->addRoute('GET', '/user/{login}/{type}', ["App\controllers\admin\UserController", "updateRole"]);
 
 
         // API

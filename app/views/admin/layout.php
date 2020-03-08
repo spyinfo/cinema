@@ -61,7 +61,7 @@
 
 
                 <li><a href="/"><i class="fa fa-sign-out"></i> <span>Перейти на сайт</span></a></li>
-                <li><a href="/admin/logout"><i class="fa fa-sign-out"></i> <span>Выйти из аккаунта</span></a></li>
+                <li><a href="/logout"><i class="fa fa-sign-out"></i> <span>Выйти из аккаунта</span></a></li>
             </ul>
         </section>
     </aside>

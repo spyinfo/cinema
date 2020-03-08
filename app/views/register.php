@@ -27,17 +27,32 @@
                 <input type="text" class="form__input" placeholder="Логин" name="login" id="login" maxlength="32" required>
             </label>
             <div id="exist"></div>
-            <label>
-                <input type="password" class="form__input" placeholder="Пароль" name="password" maxlength="32" required>
+            <label class="text-center">
+                <input type="password" class="form__input" placeholder="Пароль" name="password" id="password" maxlength="32" required>
+                <span id="conditions" style="display: none;">
+                    <span style="color: red; display: block">Строка должна содержать 1 заглавную букву</span>
+                    <span style="color: red; display: block">Строка должна содержать 1 цифру</span>
+                    <span style="color: red; display: block">Строка должна содержать 1 заглавную букву</span>
+                </span>
             </label>
-<!--            <label>-->
-<!--                <input type="password" class="form__input" placeholder="Повторите пароль" name="repeat_password" maxlength="32" required>-->
-<!--            </label>-->
             <input type="submit" class="button form__button" value="Зарегистрироваться" id="register" disabled>
         </form>
     </div>
 </section>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/main.js"></script>
+<script>
+    $(function () {
+        const passwordInput = $("#password");
+
+        $(passwordInput).on('focus', function () {
+            $("#conditions").css('display', 'block');
+        });
+
+        $(passwordInput).on('focusout', function () {
+            $("#conditions").css('display', 'none');
+        });
+    });
+</script>
 </body>
 </html>

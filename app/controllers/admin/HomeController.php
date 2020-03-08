@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        header("Location: /admin/home");;
+        header("Location: /admin/home");
     }
 
     public function home()

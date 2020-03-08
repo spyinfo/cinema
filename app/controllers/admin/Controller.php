@@ -10,7 +10,7 @@ class Controller
 {
     public function __construct()
     {
-        if (($_SESSION['user']->id_role) == Roles::USER)
+        if (($_SESSION['user']->id_role) == Roles::USER || !$_SESSION['user'])
         {
             Helpers::abort(404);
         }

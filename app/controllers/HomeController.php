@@ -39,8 +39,10 @@ class HomeController extends Controller
 
         if ($_GET) {
             $session = $this->database->getSession($film->id, $_GET['date'], $_GET['time']);
+            var_dump($session);
             $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
             $rows = $this->database->getAllCondition("rows", "id_hall", $session->id_hall);
+            var_dump($rows);
             $hall = $this->database->getRow("halls", $session->id_hall);
             $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
 

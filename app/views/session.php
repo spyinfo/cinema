@@ -112,8 +112,10 @@
                     <?php if (\App\components\Roles::getRole()):?>
                         <input type="submit" class="button default-button-form" value="Перейти к оформлению">
                     <?php else:?>
-                        <input type="submit" class="button default-button-form" value="Перейти к оформлению" disabled>
-                        <span>Вы не зарегистрированы, поэтому не можете купить билет!</span>
+                        <label>
+                            Вы не зарегистрированы, поэтому не можете купить билет!
+                            <input type="submit" class="button default-button-form" value="Перейти к оформлению" disabled>
+                        </label>
                     <?php endif;?>
                 </div>
             </div>
