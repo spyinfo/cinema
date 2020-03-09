@@ -63,6 +63,5 @@
     <?php if ($this->section('scripts')):?>
         <?= $this->section('scripts');?>
     <?php endif;?>
-
 </body>
 </html>

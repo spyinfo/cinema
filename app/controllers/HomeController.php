@@ -38,6 +38,8 @@ class HomeController extends Controller
     {
         $film = $this->database->getRow("films", $id);
 
+        if (!$film) Helpers::abort(404);
+
         if (count($_GET) == 1) {
             $cinemas = $this->database->getCinemaWhereExistFilms($id, $_GET['date']);
 
@@ -46,31 +48,22 @@ class HomeController extends Controller
                 'cinemas' => $cinemas,
                 'date' => $_GET['date']
             ]);
-        }
+        } else if (count($_GET) == 4) {
+            $session = $this->database->getSession($film->id, $_GET['date'], $_GET['time'], $_GET['hall']);
+            $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
+            $rows = $this->database->getAllCondition("rows", "id_hall", $_GET['hall']);
+            $hall = $this->database->getRow("halls", $_GET['hall']);
+            $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
 
-//        if (count($_GET)) {
-//            $session = $this->database->getSession($film->id, $_GET['date'], $_GET['time'], $_GET['hall']);
-//            $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
-//            $rows = $this->database->getAllCondition("rows", "id_hall", $_GET['hall']);
-//            $hall = $this->database->getRow("halls", $_GET['hall']);
-//            $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
-//
-//            echo $this->view->render("session", [
-//                'cinema' => $cinema,
-//                'film' => $film,
-//                'rows' => $rows,
-//                'hall' => $hall,
-//                'session' => $session,
-//                'tickets' => $tickets
-//            ]);
-//        } else {
-//            $cinemas = $this->database->getCinemaWhereExistFilms($id);
-//
-//            echo $this->view->render("film", [
-//                'film' => $film,
-//                'cinemas' => $cinemas
-//            ]);
-//        }
+            echo $this->view->render("session", [
+                'cinema' => $cinema,
+                'film' => $film,
+                'rows' => $rows,
+                'hall' => $hall,
+                'session' => $session,
+                'tickets' => $tickets
+            ]);
+        } else Helpers::abort(404);
     }
 
     public function payment($id)

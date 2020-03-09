@@ -181,7 +181,6 @@
         font-family: 'Lora', serif;
         font-size: 1.33rem;
     }
-
 }
 
 .login-label {
@@ -200,6 +199,23 @@
     font-size: 1.3rem;
     display: inline-block;
     margin-top: 20px;
+}
+
+.conditions {
+    display: none;
+
+    &__condition {
+        display: block;
+        margin: 5px 0;
+    }
+
+    &__condition_error {
+        color: red;
+    }
+
+    &__condition_success {
+        color: #00a65a;
+    }
 }
 
 /*=============================================
