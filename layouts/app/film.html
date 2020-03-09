@@ -50,7 +50,12 @@
 
             <div class="theatres">
                 <h3 class="theatres__title text-center">Кинотеатры</h3>
-
+                <div class="text-center">
+                    <label>
+                        <input type="text" class="form-control theatres__date" min="2020-03-08" value="10.03.2020" id="date-sessions" readonly>
+                        <small class="theatres__desc">Кликните, чтобы выбрать дату</small>
+                    </label>
+                </div>
                 <div class="theatres__item">
                     <div class="theatres__about">
                         <div class="theatres__name">
@@ -124,5 +129,26 @@
             </div>
         </div>
     </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+<script>
+    const date = $("#date-sessions");
+    const url = window.location.href;
+    const dateURL = url.match(/date=(..........)/)[1].replace(/-/g, ".");
+
+    $(date).datepicker({
+        onSelect: function(dateText) {
+            // console.log("Selected date: " + dateText + "; input's current value: " + this.value);
+            const date = dateText.replace(/\./g, "-");
+            const match = url.match(/film\/(\d+)/);
+            const id = match[1];
+            window.location = `http://cinema/film/${id}?date=${date}`;
+        },
+        minDate: 0
+    });
+
+    $(date).datepicker("option", "dateFormat", "dd.mm.yy");
+    $(date).datepicker('setDate', dateURL);
+</script>
 </body>
 </html>

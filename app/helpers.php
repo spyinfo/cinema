@@ -39,11 +39,11 @@ class Helpers
         return false;
     }
 
-    public static function getSessionsForFilms($idFilm, $idCinema)
+    public static function getSessionsForFilms($idFilm, $idCinema, $date)
     {
         $pdo = (new Helpers)->getContainer()->get('PDO');
         $database = new Database($pdo);
-        return $database->getSessionsForCinema($idFilm, $idCinema);
+        return $database->getSessionsForCinema($idFilm, $idCinema, $date);
     }
 
     public static function abort($type)

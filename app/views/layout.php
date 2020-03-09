@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap&subset=cyrillic" rel="stylesheet">
     <link rel="shortcut icon" href="/static/icon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/static/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
     <link rel="stylesheet" href="/static/css/main.css">
     <title><?= $this->e($title);?></title>
 </head>
@@ -56,6 +57,12 @@
 
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/jQuery.print.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
     <script src="/static/js/main.js"></script>
+
+    <?php if ($this->section('scripts')):?>
+        <?= $this->section('scripts');?>
+    <?php endif;?>
+
 </body>
 </html>

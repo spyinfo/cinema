@@ -12,7 +12,7 @@ $this->layout('layout', ['title' => 'Главная']) ?>
                 </div>
                 <img src="data:image/jpeg;base64,<?= base64_encode($film->image);?>" alt="<?= $film->name; ?>">
                 <div class="film__overlay">
-                    <a href="/film/<?= $film->id;?>" class="film__link">Купить билет</a>
+                    <a href="/film/<?= $film->id . '?date=' . date("d-m-yy");?>" class="film__link">Купить билет</a>
                 </div>
             </div>
             <?php endforeach;?>

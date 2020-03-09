@@ -262,22 +262,6 @@
                 </div>
 
                 <div class="selected-places text-center">
-                    <div class="selected-places__item">
-                        <div class="selected-places__place">
-                            8 место
-                        </div>
-                        <div class="selected-places__row">
-                            2 ряд
-                        </div>
-                    </div>
-                    <div class="selected-places__item">
-                        <div class="selected-places__place">
-                            8 место
-                        </div>
-                        <div class="selected-places__row">
-                            3 ряд
-                        </div>
-                    </div>
                 </div>
 
                 <div class="buttons-session">
@@ -287,7 +271,8 @@
 
                     <div class="buy">
 <!--                        <input type="submit" class="button default-button-form" value="Перейти к оформлению">-->
-                        <a href="payment.html" class="button">Перейти к оформлению</a>
+                        <input type="number" hidden name="logged" value="0" id="logged">
+                        <button class="button default-button-form" disabled id="to-buy">Перейти к оформлению</button>
                     </div>
                 </div>
 

@@ -12,6 +12,7 @@ $( function () {
     // Обработка клика на input
     $(checkbox).not(".fake-checkbox_not-active").on('click', function (e) {
         const input = $(this).prev();
+        const isLogged = $("#logged").val() == 0 ? false : true;
 
         const row   = input.data("row");
         const place = input.data("place");
@@ -29,10 +30,17 @@ $( function () {
 
         if (!input.is(":checked")) {
             $(".selected-places").append(placeHTML);
+            if (isLogged) {
+                $("#to-buy").prop('disabled', false);
+            }
         } else {
+            if ($(".selected-places__item").length === 1) {
+                $("#to-buy").prop('disabled', true);
+            }
             $(`*[data-row-selected="${row}"][data-place-selected="${place}"]`).remove();
         }
     });
+
 
     // Print
     $("#print").on("click", function () {

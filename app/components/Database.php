@@ -321,17 +321,19 @@ class Database
      *
      * @param $idFilm
      * @param $idCinema
+     * @param $date
      * @return array
      */
-    public function getSessionsForCinema($idFilm, $idCinema)
+    public function getSessionsForCinema($idFilm, $idCinema, $date)
     {
         $query = $this->pdo->prepare("SELECT *
                                                        FROM sessions
                                                             INNER JOIN halls on sessions.id_hall = halls.id
-                                                       WHERE `id_film` = :idFilm AND halls.id_cinema = :idCinema");
+                                                       WHERE `id_film` = :idFilm AND halls.id_cinema = :idCinema AND `date` = :date_");
         $params = [
             'idFilm' => $idFilm,
-            'idCinema' => $idCinema
+            'idCinema' => $idCinema,
+            'date_' => date("Y-m-d", strtotime($date))
         ];
         $query->execute($params);
 
@@ -343,13 +345,16 @@ class Database
      * Возвращает кинотеатры, где на прокате есть текущие фильмы
      *
      * @param $idFilm
+     * @param $date
      * @return array
      */
-    public function getCinemaWhereExistFilms($idFilm)
+    public function getCinemaWhereExistFilms($idFilm, $date)
     {
-        $query = $this->pdo->prepare("SELECT * FROM getCinemaWhereExistFilms WHERE `id_film` = :idFilm");
+        $query = $this->pdo->prepare("SELECT * FROM getCinemaWhereExistFilms 
+                                                         WHERE `id_film` = :idFilm AND `date` = :date_");
         $params = [
-            "idFilm" => $idFilm
+            "idFilm" => $idFilm,
+            "date_" => date("Y-m-d", strtotime($date))
         ];
         $query->execute($params);
         return $query->fetchAll(PDO::FETCH_OBJ);
@@ -362,17 +367,19 @@ class Database
      * @param $idFilm
      * @param $date
      * @param $time
+     * @param $idHall
      * @return mixed
      */
-    public function getSession($idFilm, $date, $time)
+    public function getSession($idFilm, $date, $time, $idHall)
     {
         $query = $this->pdo->prepare("SELECT * FROM sessions
-                                                         WHERE `id_film` = :idFilm AND `date` = :date_ AND `time` = :time_ 
+                                                         WHERE `id_film` = :idFilm AND `date` = :date_ AND `time` = :time_  AND `id_hall` = :idHall
                                                          LIMIT 1");
         $params = [
             'idFilm' => $idFilm,
             'date_' => date("Y-m-d", strtotime($date)),
-            'time_' => date("H:i:s", strtotime($time))
+            'time_' => date("H:i:s", strtotime($time)),
+            'idHall' => $idHall
         ];
         $query->execute($params);
         return $query->fetch(PDO::FETCH_OBJ);
@@ -381,7 +388,7 @@ class Database
     public function getCinemaWithHalls($id_cinema, $id_hall)
     {
         $query = $this->pdo->prepare("SELECT * FROM getCinemaWithHalls
-                                                         WHERE `id_cinema` = :id_cinema AND `hall_id` = :id_hall ");
+                                                         WHERE `id_cinema` = :id_cinema AND `hall_id` = :id_hall");
         $params = [
             'id_cinema' => $id_cinema,
             'id_hall' => $id_hall

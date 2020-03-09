@@ -6,6 +6,7 @@ use App\components\Database;
 use App\components\Roles;
 use Helpers;
 use League\Plates\Engine;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use \Tamtamchik\SimpleFlash\Flash;
 
 class HomeController extends Controller
@@ -37,31 +38,39 @@ class HomeController extends Controller
     {
         $film = $this->database->getRow("films", $id);
 
-        if ($_GET) {
-            $session = $this->database->getSession($film->id, $_GET['date'], $_GET['time']);
-            var_dump($session);
-            $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
-            $rows = $this->database->getAllCondition("rows", "id_hall", $session->id_hall);
-            var_dump($rows);
-            $hall = $this->database->getRow("halls", $session->id_hall);
-            $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
-
-            echo $this->view->render("session", [
-                'cinema' => $cinema,
-                'film' => $film,
-                'rows' => $rows,
-                'hall' => $hall,
-                'session' => $session,
-                'tickets' => $tickets
-            ]);
-        } else {
-            $cinemas = $this->database->getCinemaWhereExistFilms($id);
+        if (count($_GET) == 1) {
+            $cinemas = $this->database->getCinemaWhereExistFilms($id, $_GET['date']);
 
             echo $this->view->render("film", [
                 'film' => $film,
-                'cinemas' => $cinemas
+                'cinemas' => $cinemas,
+                'date' => $_GET['date']
             ]);
         }
+
+//        if (count($_GET)) {
+//            $session = $this->database->getSession($film->id, $_GET['date'], $_GET['time'], $_GET['hall']);
+//            $cinema = $this->database->getRowCondition("cinemas", "name", $_GET['cinema']);
+//            $rows = $this->database->getAllCondition("rows", "id_hall", $_GET['hall']);
+//            $hall = $this->database->getRow("halls", $_GET['hall']);
+//            $tickets = $this->database->getAllCondition("tickets", "id_session", $session->id);
+//
+//            echo $this->view->render("session", [
+//                'cinema' => $cinema,
+//                'film' => $film,
+//                'rows' => $rows,
+//                'hall' => $hall,
+//                'session' => $session,
+//                'tickets' => $tickets
+//            ]);
+//        } else {
+//            $cinemas = $this->database->getCinemaWhereExistFilms($id);
+//
+//            echo $this->view->render("film", [
+//                'film' => $film,
+//                'cinemas' => $cinemas
+//            ]);
+//        }
     }
 
     public function payment($id)

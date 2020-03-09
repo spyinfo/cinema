@@ -315,6 +315,29 @@
         padding-top: 45px;
     }
 
+    &__date {
+        text-align: center;
+        font-size: 1.45rem;
+        margin-top: 25px;
+        color: #000000;
+    }
+
+    &__desc {
+        display: block;
+        margin-top: 6px;
+
+        &:after, &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            display: inline-block;
+            margin: 0 7px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid #ffffff;
+        }
+    }
+
 }
 
 /*=============================================
@@ -597,10 +620,10 @@
     margin: 30px auto 0 auto;
 }
 
-
 /*=============================================
 ================== PROFILE ====================
  ============================================*/
+
 .profile {
     background: #212227;
 }
