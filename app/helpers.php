@@ -63,14 +63,10 @@ class Helpers
         exit;
     }
 
-    public static function generateTicket($length = 8)
+    public static function getFinishPlace($id_hall, $id_row)
     {
-        $characters = 'ABCDEFGHIKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
+        $pdo = (new Helpers)->getContainer()->get('PDO');
+        $database = new Database($pdo);
+        return $database->getRow2Condition("rows", "id_hall", $id_hall, "id_row", $id_row);
     }
 }

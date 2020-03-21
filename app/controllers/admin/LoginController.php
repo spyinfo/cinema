@@ -32,15 +32,28 @@ class LoginController {
 
     public function login()
     {
+        // Добавляем в базу IP-адрес пользователя
+        $this->database->store("ip", [
+            'ip_address' => $_SERVER['REMOTE_ADDR']
+        ]);
+
+        // Берем кол-во попыток входа за последнюю минуту
+        $count = $this->database->getCountIP($_SERVER['REMOTE_ADDR']);
+
+        // Если условие не выполняется, то вывыодим сообщение. Иначе идем дальше.
+        if ($count->count > 3) {
+            $this->flash->error("Вам разрешено только 3 попытки за 1 минуту!<br>Пожалуйста, подождите!");
+            header("Location: /login"); exit;
+        }
+
+        // Попробуем взять из БД пользвоателя с таким логином. В противном случае вернем false
         $user = $this->database->getRowCondition("users", 'login', $_POST['login']);
 
-        if (($user) && (md5($_POST['password']) == $user->password))
-        {
+        // Если md5(пароль) равно введенному паролю, то логиним пользователя. Иначе выводим сообщение
+        if (($user) && (md5($_POST['password']) == $user->password)) {
             $_SESSION['user'] = $user;
             header("Location: /profile");
-        }
-        else
-        {
+        } else {
             $this->flash->error("Неверно введён логин или пароль!");
             header("Location: /login");
         }

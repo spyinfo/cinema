@@ -29,14 +29,22 @@
             <div id="exist"></div>
             <label class="text-center">
                 <input type="password" class="form__input" placeholder="Пароль" name="password" id="password" maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" title="Пожалуйста, выполните все условия" required>
-                <span class="conditions">
+<!--                <span class="conditions">-->
+<!--                        <span class="conditions__condition conditions__condition_error" id="length">Длина строки не менее 6 символов</span>-->
+<!--                        <span class="conditions__condition conditions__condition_error" id="lowercase">Имеет хотя бы 1 строчную букву</span>-->
+<!--                        <span class="conditions__condition conditions__condition_error" id="uppercase">Имеет хотя бы 1 прописную букву</span>-->
+<!--                        <span class="conditions__condition conditions__condition_error" id="number">Имеет хотя бы 1 цифру</span>-->
+<!--                </span>-->
+            </label>
+            <input type="submit" class="button form__button" value="Зарегистрироваться" id="register" disabled>
+            <div class="text-center" style="margin-top: 25px;">
+                 <span class="conditions">
                         <span class="conditions__condition conditions__condition_error" id="length">Длина строки не менее 6 символов</span>
                         <span class="conditions__condition conditions__condition_error" id="lowercase">Имеет хотя бы 1 строчную букву</span>
                         <span class="conditions__condition conditions__condition_error" id="uppercase">Имеет хотя бы 1 прописную букву</span>
                         <span class="conditions__condition conditions__condition_error" id="number">Имеет хотя бы 1 цифру</span>
-                    </span>
-            </label>
-            <input type="submit" class="button form__button" value="Зарегистрироваться" id="register" disabled>
+                </span>
+            </div>
         </form>
     </div>
 </section>

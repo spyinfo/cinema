@@ -89,12 +89,18 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('POST', '/cinema/{id}/halls/store', ["App\controllers\admin\CinemaController", "storeHall"]);
         $r->addRoute('POST', '/cinema/{id}/halls/storeHallPlaces', ["App\controllers\admin\CinemaController", "storeHallPlaces"]);
         $r->addRoute('GET', '/cinema/{id_cinema}/halls/{id_hall}', ["App\controllers\admin\CinemaController", "showHall"]);
+        $r->addRoute('GET', '/cinema/{id_cinema}/halls/{id_hall}/edit', ["App\controllers\admin\CinemaController", "editHall"]);
+        $r->addRoute('POST', '/cinema/{id_cinema}/halls/{id_hall}/update', ["App\controllers\admin\CinemaController", "updateHall"]);
+        $r->addRoute('POST', '/cinema/{id_cinema}/halls/{id_hall}/edit-hall-places', ["App\controllers\admin\CinemaController", "editHallPlaces"]);
 
 
         // SESSION
         $r->addRoute('GET', '/session', ["App\controllers\admin\SessionController", "index"]);
         $r->addRoute('GET', '/session/create', ["App\controllers\admin\SessionController", "create"]);
         $r->addRoute('POST', '/session/store', ["App\controllers\admin\SessionController", "store"]);
+        $r->addRoute('GET', '/session/{id}/edit', ["App\controllers\admin\SessionController", "edit"]);
+        $r->addRoute('POST', '/session/{id}/update', ["App\controllers\admin\SessionController", "update"]);
+        $r->addRoute('GET', '/session/{id}/delete', ["App\controllers\admin\SessionController", "delete"]);
 
 
         // FILM
@@ -114,8 +120,6 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/api/halls/{id}', ["App\controllers\admin\APIController", "getHalls"]);
 
     });
-    // TODO удалить потом
-//    $r->addRoute('POST', '/test', ["App\controllers\HomeController", "test"]);
 });
 
 

@@ -22,7 +22,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <label for="district">Район</label>
-                                            <input type="text" class="form-control" maxlength="32" name="district" id="district" required>
+                                            <input type="text" class="form-control" maxlength="32" name="district" id="district">
                                         </div>
                                         <div class="col-lg-6">
                                             <label for="street">Улица</label>

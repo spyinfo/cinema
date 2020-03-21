@@ -127,6 +127,68 @@ class CinemaController extends Controller
         header("Location: /admin/cinema");
     }
 
+    public function editHall($id_cinema, $id_hall)
+    {
+        $cinema = $this->database->getRow("cinemas", $id_cinema);
+        $hall = $this->database->getRow("halls", $id_hall);
+
+        if (!$cinema || !$hall) Helpers::abort(404);
+
+        echo $this->view->render("admin/cinema/halls/edit", [
+            'cinema' => $cinema,
+            'hall' => $hall
+        ]);
+    }
+
+    public function updateHall($id_cinema, $id_hall)
+    {
+        echo $this->view->render("admin/cinema/halls/editPlaces", [
+            'rows' =>  $_POST['count_of_row'],
+            'name' => $_POST['name'],
+            'cinema' => $_POST['cinema'],
+            'hall' => $_POST['hall']
+        ]);
+    }
+
+    // TODO: Не удалять все записи при изменении
+    public function editHallPlaces()
+    {
+        $dataHall = [
+            'id' => $_POST['hall'],
+            'name' => $_POST['name'],
+            'id_cinema' => $_POST['cinema'],
+            'count_of_row' => $_POST['count_of_row']
+        ];
+
+        $this->database->update("halls", $_POST['hall'], $dataHall);
+        $this->database->deleteRowsAndPlaces($dataHall['id']);
+
+        unset($_POST['name'], $_POST['cinema'], $_POST['count_of_row'], $_POST['hall']);
+
+        foreach ($_POST as $key => $value) {
+            $dataRow = [
+                'id_hall' => $dataHall['id'],
+                'id_row' => $key,
+                'start_place' => '1',
+                'finish_place' => $value
+            ];
+            $this->database->store("rows", $dataRow);
+        }
+
+        foreach ($_POST as $key => $value) {
+            for ($i = 1; $i <= $value; $i++) {
+                $dataPlace = [
+                    'id_place' => $i,
+                    'id_hall' => $dataHall['id'],
+                    'id_row' => $key
+                ];
+                $this->database->store("places", $dataPlace);
+            }
+        }
+
+        header("Location: /admin/cinema");
+    }
+
     public function showHall($id_cinema, $id_hall)
     {
         $cinemaAndHall = $this->database->getCinemaWithHalls($id_cinema, $id_hall);

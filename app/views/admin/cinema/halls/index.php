@@ -30,10 +30,10 @@
                                     <td><?= $row->count_of_row;?></td>
                                     <td>
                                         <a href="/admin/cinema/<?=$cinema->id?>/halls/<?=$row->id;?>" class="btn btn-info">Схема зала</a>
-                                        <a href="/admin/cinema/<?= $row->id;?>/edit" class="btn btn-warning">
+                                        <a href="/admin/cinema/<?= $cinema->id;?>/halls/<?=$row->id;?>/edit" class="btn btn-warning">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a href="/admin/cinema/<?= $row->id;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить этот зал?');">
+                                        <a href="/admin/cinema/<?= $cinema->id;?>/halls/<?=$row->id;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить этот зал?');">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>

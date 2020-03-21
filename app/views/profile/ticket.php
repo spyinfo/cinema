@@ -2,7 +2,7 @@
 
 <div class="congratulations text-center" style="padding-top: 35px;">
     <a href="/profile/orders" class="button">Назад</a>
-    <div class="congratulations__desc" id="print-ticket">
+    <div class="congratulations__desc" id="print-ticket" style="margin-bottom: 20px;">
         <div class="congratulations__film text-center">
             <strong><?=$sessionInfo->name_film;?></strong>
         </div>

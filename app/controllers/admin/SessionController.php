@@ -54,9 +54,46 @@ class SessionController extends Controller
                 'date' => $_POST['date'],
                 'time' => $_POST['time']
             ];
-
             $this->database->store("sessions", $data);
             header("Location: /admin/session");
         }
+    }
+
+    public function edit($id)
+    {
+        $films = $this->database->getAll("films");
+        $cinemas = $this->database->getAll("cinemas");
+        $session = $this->database->getRow("getsessionforedit", $id);
+        echo $this->view->render("admin/session/edit", [
+            'session' => $session,
+            'films' => $films,
+            'cinemas' => $cinemas
+        ]);
+    }
+
+    // TODO: Обновление с выбором зала!
+    public function update($id)
+    {
+        if (count($_POST) != 6) {
+            $this->flash->error("Необходимо заполнить все поля!");
+            header("Location: /admin/session/" . $id . "/edit");
+        } else {
+            $data = [
+                'id' => $id,
+                'id_film' => $_POST['films'],
+                'id_hall' => $_POST['halls'],
+                'date' => $_POST['date'],
+                'time' => $_POST['time'],
+                'cost' => $_POST['cost']
+            ];
+            $this->database->update("sessions", $id, $data);
+            header("Location: /admin/session");
+        }
+    }
+
+    public function delete($id)
+    {
+        $this->database->delete("sessions", $id);
+        header("Location: /admin/session");
     }
 }

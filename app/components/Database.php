@@ -397,6 +397,13 @@ class Database
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
+    /**
+     * @param $session
+     * @param $hall
+     * @param $row
+     * @param $place
+     * @return array
+     */
     public function isPlacesNotFree($session, $hall, $row, $place)
     {
         $query = $this->pdo->prepare("SELECT * FROM tickets
@@ -414,6 +421,10 @@ class Database
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * @param $login
+     * @return array
+     */
     public function getOrders($login)
     {
         $query = $this->pdo->prepare("SELECT * FROM getinfoaboutuser
@@ -424,5 +435,24 @@ class Database
         ];
         $query->execute($params);
         return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function deleteRowsAndPlaces($id_hall)
+    {
+        $queryPlaces = $this->pdo->prepare("DELETE FROM places WHERE id_hall = :id_hall");
+        $queryRows = $this->pdo->prepare("DELETE FROM rows WHERE id_hall = :id_hall");
+        $params = [
+            'id_hall' => $id_hall
+        ];
+        $queryPlaces->execute($params);
+        $queryRows->execute($params);
+    }
+
+    public function getCountIP($ip)
+    {
+        $query = $this->pdo->prepare("SELECT COUNT(*) as count FROM ip WHERE ip_address LIKE '$ip' AND timestamp > (now() - interval 1 minute )");
+
+        $query->execute();
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 }

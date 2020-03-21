@@ -6,6 +6,7 @@ use App\components\Database;
 use App\components\Roles;
 use Helpers;
 use League\Plates\Engine;
+use Mobile_Detect;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use \Tamtamchik\SimpleFlash\Flash;
 
@@ -14,12 +15,9 @@ class HomeController extends Controller
     private $view;
     private $database;
     private $flash;
-    /**
-     * @var \Mobile_Detect
-     */
     private $detect;
 
-    public function __construct(Engine $view, Database $database, Flash $flash, \Mobile_Detect $detect)
+    public function __construct(Engine $view, Database $database, Flash $flash, Mobile_Detect $detect)
     {
         $this->view = $view;
         $this->database = $database;
@@ -102,7 +100,8 @@ class HomeController extends Controller
 
         $sessionInfo = $this->database->getRow("getSessionWithFilmAndHall", $session);
 
-        unset($_POST['session'], $_POST['hall']);
+        unset($_POST['session'], $_POST['hall'], $_POST['logged-']);
+
 
         foreach ($_POST as $key => $value) {
             array_push($places, explode("-", $key));

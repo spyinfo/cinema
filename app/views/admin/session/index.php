@@ -34,10 +34,10 @@
                                     <td><?=date('d.m.Y', strtotime($row->date));?></td>
                                     <td><?=date('H:i', strtotime($row->time));?></td>
                                     <td>
-                                        <a href="/admin/film/<?= $row->id_session;?>/edit" class="btn btn-warning">
+                                        <a href="/admin/session/<?= $row->id_session;?>/edit" class="btn btn-warning">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a href="/admin/film/<?= $row->id_session;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить кинотеатр?');">
+                                        <a href="/admin/session/<?= $row->id_session;?>/delete" class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить сеанс?');">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>

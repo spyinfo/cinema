@@ -1,6 +1,5 @@
 <?php $this->layout('admin/layout', ['title' => 'Добавить сеанс', 'second_title' => 'Session']); ?>
 
-
 <div class="content-wrapper">
     <section class="content container-fluid">
         <section class="content">
@@ -71,3 +70,7 @@
         </section>
     </section>
 </div>
+<script>
+    const today = new Date().toISOString().split("T")[0];
+    document.querySelector("#date").setAttribute("min", today);
+</script>
