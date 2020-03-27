@@ -57,6 +57,7 @@
                 <li><a href="/admin/film"><i class="fa fa-video-camera"></i><span>Фильмы</span></a></li>
                 <li><a href="/admin/session"><i class="fa fa-film"></i> <span>Сеансы</span></a></li>
                 <li><a href="/admin/user"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
+                <li><a href="/admin/statistic"><i class="fa fa-area-chart"></i> <span>Статистика</span></a></li>
 
 
 

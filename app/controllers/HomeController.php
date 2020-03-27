@@ -70,7 +70,7 @@ class HomeController extends Controller
         $session_id = $_POST['session'];
         $hall_id = $_POST['hall'];
 
-        unset($_POST['cost'], $_POST['session'], $_POST['hall']);
+        unset($_POST['cost'], $_POST['session'], $_POST['hall'], $_POST['logged']);
 
         $countOfPlaces = count($_POST);
         $total = $countOfPlaces * $cost;
@@ -117,10 +117,20 @@ class HomeController extends Controller
             ];
 
             $isPLaceNotFree = $this->database->isPlacesNotFree($session, $hall, $place[0], $place[1]);
-            if ($isPLaceNotFree) break;
+            if ($isPLaceNotFree) Helpers::abort("Place");
+        }
 
+        foreach ($places as $place) {
+            $data = [
+                "id_session" => $session,
+                "id_hall" => $hall,
+                "id_place" => $place[1],
+                "id_row" => $place[0],
+                "login" => Roles::getLogin(),
+            ];
             $this->database->store("tickets", $data);
         }
+
 
         echo $this->view->render("ticket", [
             'sessionInfo' => $sessionInfo,

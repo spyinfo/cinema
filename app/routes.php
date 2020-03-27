@@ -42,6 +42,7 @@ $container = $containerBuilder->build();
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', ["App\controllers\HomeController", "index"]);
+
     $r->addRoute('GET', '/film/{id}', ["App\controllers\HomeController", "film"]);
     $r->addRoute('POST', '/film/{id}/payment', ["App\controllers\HomeController", "payment"]);
     $r->addRoute('POST', '/film/{id}/ticket', ["App\controllers\HomeController", "ticket"]);
@@ -114,6 +115,9 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
         // USER
         $r->addRoute('GET', '/user', ["App\controllers\admin\UserController", "index"]);
         $r->addRoute('GET', '/user/{login}/{type}', ["App\controllers\admin\UserController", "updateRole"]);
+
+        // STATISTIC
+        $r->addRoute('GET', '/statistic', ["App\controllers\admin\StatisticController", "index"]);
 
 
         // API
