@@ -21,7 +21,7 @@ class FilmController extends Controller
 
     public function index()
     {
-        $films = $this->database->getAll("getFilmsInAdmin");
+        $films = $this->database->getAll("getfilmsinadmin");
         echo $this->view->render("admin/film/index", ['films' => $films]);
     }
 

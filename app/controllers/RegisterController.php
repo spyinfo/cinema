@@ -8,19 +8,23 @@ use App\components\Database;
 use App\components\Roles;
 use Helpers;
 use League\Plates\Engine;
+use Mobile_Detect;
 use Tamtamchik\SimpleFlash\Flash;
 
-class RegisterController
+class RegisterController extends Controller
 {
     private $view;
     private $database;
     private $flash;
+    private $detect;
 
-    public function __construct(Engine $view, Database $database, Flash $flash)
+    public function __construct(Engine $view, Database $database, Flash $flash,  Mobile_Detect $detect)
     {
         $this->view = $view;
         $this->database = $database;
         $this->flash = $flash;
+        $this->detect = $detect;
+        parent::__construct($this->detect);
 
         if (Roles::getRole()) {
             Helpers::abort(404);

@@ -11,7 +11,7 @@
 <body>
 <section class="section-register">
     <div class="container">
-        <a href="/" class="button"> << Назад</a>
+        <a href="/" class="button">Назад</a>
         <h2 class="text-center">Вход в личный кабинет</h2>
 
         <form action="/login/check" method="POST" class="form form-register text-center">

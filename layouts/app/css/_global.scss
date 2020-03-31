@@ -13,11 +13,13 @@ body {
     padding: 0; margin: 0;
     background: #0C171B;
     color: #fff;
+    min-width: 1790px;
 }
 
 .container {
-    width: 1774px;
+    width: 1790px;
     margin: 0 auto;
+    padding: 0 16px;
 }
 
 .text-center {

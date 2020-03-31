@@ -24,7 +24,7 @@ class SessionController extends Controller
 
     public function index()
     {
-        $sessions = $this->database->getAll("getSessionsWithFilms");
+        $sessions = $this->database->getAll("getsessionswithfilms");
         echo $this->view->render("admin/session/index", ['sessions' => $sessions]);
     }
 

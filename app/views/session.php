@@ -100,7 +100,7 @@
 
             <div class="buttons-session">
                 <div class="back">
-                    <a href="/film/<?= $film->id ;?>" class="button">Назад</a>
+                    <a href="/film/<?= $film->id;?>?date=<?=date("d-m-Y");?>" class="button">Назад</a>
                 </div>
 
                 <div class="buy">
@@ -133,7 +133,7 @@
                 Возможно вы вручную изменили URL в браузере.
 
                 <div class="back session-not-find__back">
-                    <a href="/film/<?= $film->id ;?>" class="button">Назад</a>
+                    <a href="/film/<?= $film->id;?>?date=<?=date("d-m-Y");?>" class="button">Назад</a>
                 </div>
             </div>
         </div>

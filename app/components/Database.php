@@ -190,7 +190,7 @@ class Database
      */
     public function getAllCondition($table, $column, $value)
     {
-        $query = $this->pdo->prepare("SELECT * FROM $table WHERE $column = :value");
+        $query = $this->pdo->prepare("SELECT * FROM `$table` WHERE `$column` = :value");
         $params = [
             'value' => $value
         ];
@@ -350,7 +350,7 @@ class Database
      */
     public function getCinemaWhereExistFilms($idFilm, $date)
     {
-        $query = $this->pdo->prepare("SELECT * FROM getCinemaWhereExistFilms 
+        $query = $this->pdo->prepare("SELECT * FROM getcinemawhereexistfilms 
                                                          WHERE `id_film` = :idFilm AND `date` = :date_");
         $params = [
             "idFilm" => $idFilm,
@@ -387,7 +387,7 @@ class Database
 
     public function getCinemaWithHalls($id_cinema, $id_hall)
     {
-        $query = $this->pdo->prepare("SELECT * FROM getCinemaWithHalls
+        $query = $this->pdo->prepare("SELECT * FROM getcinemawithhalls
                                                          WHERE `id_cinema` = :id_cinema AND `hall_id` = :id_hall");
         $params = [
             'id_cinema' => $id_cinema,

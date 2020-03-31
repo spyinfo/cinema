@@ -98,7 +98,7 @@ class HomeController extends Controller
         $session = $_POST['session'];
         $hall = $_POST['hall'];
 
-        $sessionInfo = $this->database->getRow("getSessionWithFilmAndHall", $session);
+        $sessionInfo = $this->database->getRow("getsessionwithfilmandhall", $session);
 
         unset($_POST['session'], $_POST['hall'], $_POST['logged-']);
 

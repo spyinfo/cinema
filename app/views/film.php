@@ -38,7 +38,6 @@
                             </div>
                         </div>
                         <div class="theatres__times">
-
                             <?php
                                 $sessions = Helpers::getSessionsForFilms($film->id, $cinema->id, $date);
                                 foreach ($sessions as $session):?>

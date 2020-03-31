@@ -34,7 +34,7 @@ $containerBuilder->addDefinitions([
     },
 
     PDO::class => function() {
-        return new PDO('mysql:host=localhost;dbname=cinema', 'root', '');
+        return new PDO('mysql:host=localhost;dbname=cinema', 'root', '', [ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ]);
     },
 ]);
 

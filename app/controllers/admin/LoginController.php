@@ -4,19 +4,23 @@ namespace App\controllers\admin;
 
 use App\components\Database;
 use League\Plates\Engine;
+use Mobile_Detect;
 use Tamtamchik\SimpleFlash\Flash;
 
-class LoginController {
+class LoginController extends \App\controllers\Controller {
 
     private $database;
     private $view;
     private $flash;
+    private $detect;
 
-    public function __construct(Engine $view, Database $database, Flash $flash)
+    public function __construct(Engine $view, Database $database, Flash $flash, Mobile_Detect $detect)
     {
         $this->view = $view;
         $this->database = $database;
         $this->flash = $flash;
+        $this->detect = $detect;
+        parent::__construct($this->detect);
     }
 
     public function index()

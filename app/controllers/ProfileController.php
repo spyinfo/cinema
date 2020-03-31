@@ -7,19 +7,23 @@ namespace App\controllers;
 use App\components\Database;
 use App\components\Roles;
 use League\Plates\Engine;
+use Mobile_Detect;
 use Tamtamchik\SimpleFlash\Flash;
 
-class ProfileController
+class ProfileController extends Controller
 {
     private $view;
     private $database;
     private $flash;
+    private $detect;
 
-    public function __construct(Engine $view, Database $database, Flash $flash)
+    public function __construct(Engine $view, Database $database, Flash $flash, Mobile_Detect $detect)
     {
         $this->view = $view;
         $this->database = $database;
         $this->flash = $flash;
+        $this->detect = $detect;
+        parent::__construct($this->detect);
     }
 
     public function index()
@@ -39,7 +43,7 @@ class ProfileController
     public function ticket()
     {
         $login = Roles::getLogin();
-        $sessionInfo = $this->database->getRow("getSessionWithFilmAndHall", $_GET['session']);
+        $sessionInfo = $this->database->getRow("getsessionwithfilmandhall", $_GET['session']);
         $places = $this->database->getRow2Condition("tickets", "id_session", $sessionInfo->id, "login", $login);
 
         echo $this->view->render("profile/ticket", [
