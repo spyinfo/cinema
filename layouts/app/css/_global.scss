@@ -13,11 +13,10 @@ body {
     padding: 0; margin: 0;
     background: #0C171B;
     color: #fff;
-    min-width: 1790px;
 }
 
 .container {
-    width: 1790px;
+    max-width: 1790px;
     margin: 0 auto;
     padding: 0 16px;
 }
@@ -88,7 +87,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 6.5rem;
+    font-size: 6.3rem;
+    line-height: 75px;
 }
 
 h2 {

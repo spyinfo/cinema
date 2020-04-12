@@ -20,7 +20,7 @@
                 <td class="text-center"><?=$order->cinema_name;?></td>
                 <td class="text-center"><?=$order->hall;?></td>
                 <td class="text-center">
-                    <a href="/profile/orders/ticket?session=<?=$order->id_session;?>&user=<?=$order->login;?>" style="text-decoration: underline;">Распечатать билет</a>
+                    <a href="/profile/orders/ticket?session=<?=$order->id_session;?>" style="text-decoration: underline;">Распечатать билет</a>
                 </td>
             </tr>
         <?php endforeach;?>

@@ -59,6 +59,8 @@
     .film {
         position: relative;
         margin-top: 91px;
+        margin-left: 9px;
+        margin-right: 9px;
         overflow: hidden;
 
         img {
@@ -277,6 +279,7 @@
         flex-wrap: wrap;
         //flex-direction: row-reverse;
         max-width: 50%;
+        justify-content: flex-end;
     }
 
     &__time {
@@ -351,7 +354,6 @@
 .section-session {
     padding: 110px 0;
 }
-
 
 .hall-plan {
 
@@ -637,7 +639,7 @@
     background: #0C171B;
 
     &__title {
-        font-size: 4rem;
+        font-size: 3.7rem;
     }
 }
 
@@ -658,3 +660,5 @@
         margin: 33px 0;
     }
 }
+
+@import 'media';

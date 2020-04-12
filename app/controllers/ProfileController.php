@@ -6,6 +6,7 @@ namespace App\controllers;
 
 use App\components\Database;
 use App\components\Roles;
+use Helpers;
 use League\Plates\Engine;
 use Mobile_Detect;
 use Tamtamchik\SimpleFlash\Flash;
@@ -24,6 +25,10 @@ class ProfileController extends Controller
         $this->flash = $flash;
         $this->detect = $detect;
         parent::__construct($this->detect);
+
+        if (!Roles::getRole()) {
+            Helpers::abort(404);
+        }
     }
 
     public function index()

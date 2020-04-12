@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1790, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap&subset=cyrillic" rel="stylesheet">
     <link rel="shortcut icon" href="/static/icon/favicon.ico" type="image/x-icon">
@@ -23,8 +23,7 @@
                         </a>
                     </div>
                     <h1>
-                        Сеть кинотеатров <br>
-                        УниКИТ
+                        Сеть кинотеатров
                     </h1>
                 </div>
                 <div class="head__right auth">
@@ -47,7 +46,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__title text-center">
-                Сеть кинотеатров УниКИТ
+                Сеть кинотеатров
             </div>
             <div class="footer__all-rights text-center">
                 Все права защищены. 2020

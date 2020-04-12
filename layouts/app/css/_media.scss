@@ -1,0 +1,116 @@
+@media (max-width: 1491px) {
+    .container {
+        max-width: 1490px;
+    }
+    h1, .footer__title {
+        font-size: 5.6rem;
+    }
+
+    .button {
+        padding: 12px 24px;
+        font-size: 1.3rem;
+    }
+
+    a.button {
+        display: inline-block;
+    }
+
+    .section-films .film {
+        margin-top: 70px;
+    }
+
+    .section-register h2 {
+        font-size: 4.8rem;
+    }
+}
+
+@media (max-width: 1350px) {
+    .head__right {
+        text-align: center;
+    }
+
+    .auth__button_register {
+        margin: 0 0 15px 0;
+    }
+
+    .section-films .film img {
+        width: 260px!important;
+        height: 260px!important;
+    }
+
+    .about-film__img img {
+        width: 260px!important;
+        height: 260px!important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    h1, .footer__title {
+        font-size: 5.1rem;
+    }
+
+    .auth__button_register, #login {
+        padding: 11px 22px;
+        font-size: 1.25rem;
+    }
+
+    .about-film__description {
+        font-size: 1.04rem;
+    }
+
+    .theatres__title {
+        font-size: 2.5rem;
+    }
+
+    .theatres__name {
+        font-size: 2.3rem;
+    }
+
+    .theatres__address {
+        font-size: 1.35rem;
+    }
+
+    .theatres__time {
+        width: 113px;
+        height: 63px;
+        font-size: 1.6rem;
+    }
+
+    .section-register h2 {
+        font-size: 4.5rem;
+    }
+
+    .form-register {
+        margin-top: 45px;
+    }
+
+    .form__input {
+        padding: 9px 4px 9px 12px;
+    }
+
+    .form input[type=password], .form input[type=submit], .form input[type=text] {
+        font-family: 'Lora', serif;
+        font-size: 1.23rem;
+    }
+
+    .section-profile-header__title {
+        font-size: 3.5rem;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 950px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+}
