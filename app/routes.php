@@ -136,6 +136,9 @@ $uri = $_SERVER['REQUEST_URI'];
 $uri = rawurldecode($uri);
 
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
+Sentry\init(['dsn' => 'https://3b2de202d61341c48427f2de939cd5b0@o378877.ingest.sentry.io/5202958' ]);
+
 switch ($routeInfo[0])
 {
     case FastRoute\Dispatcher::NOT_FOUND:
